@@ -4,6 +4,30 @@ A Simple 2D RPG (Role Playing Game) that combines various game systems.
 
 ![Infrastructure](Infrastructure.png)
 
+## Table of Contents
+
+- [Game-Systems-Integration](#game-systems-integration)
+  - [Table of Contents](#table-of-contents)
+  - [How to use this project](#how-to-use-this-project)
+  - [Important code helpers being used in this project](#important-code-helpers-being-used-in-this-project)
+  - [Local Webserver Setup](#local-webserver-setup)
+  - [Creating a Docker container](#creating-a-docker-container)
+  - [Logging into the Docker container](#logging-into-the-docker-container)
+  - [Stopping the Docker container](#stopping-the-docker-container)
+  - [Deleting the Docker container](#deleting-the-docker-container)
+  - [Starts the Docker container](#starts-the-docker-container)
+  - [Setting up the server instance](#setting-up-the-server-instance)
+  - [Starting the apache service](#starting-the-apache-service)
+  - [Moving files to the hosting directory](#moving-files-to-the-hosting-directory)
+  - [Cloud Webserver Setup](#cloud-webserver-setup)
+  - [Obtaining a Domain](#obtaining-a-domain)
+  - [Cloudflare for DNS and HTTPS](#cloudflare-for-dns-and-https)
+  - [Hosting from home server](#hosting-from-home-server)
+  - [Hosting from AWS](#hosting-from-aws)
+  - [Hosting](#hosting)
+  - [Frequently Asked Questions](#frequently-asked-questions)
+  - [How to set up a Script Template](#how-to-set-up-a-script-template)
+
 ## How to use this project
 
 If you want to download this project in order to extend/modify it yourself or if you would like to create a build for an OS other than Windows, follow these instructions:
@@ -175,7 +199,7 @@ If you want to download this project in order to extend/modify it yourself or if
 2. Command to send files from local machine to AWS server.
 
     ```bash
-    scp -i webserver.pem -r C:\Users\h1ddengames\Desktop\Items\Builds\WebGL ubuntu@111.111.111.111:~/data
+    scp -i webserver.pem -r C:\Users\h1ddengames\projectDirectory ubuntu@111.111.111.111:~/data
     ```
 
 ---
