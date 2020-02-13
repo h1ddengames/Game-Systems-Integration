@@ -14,3 +14,13 @@ If you want to download this project in order to extend/modify it yourself or if
 6. On the file explorer, find the project you cloned or downloaded then click Select Folder.
 7. On Unity Hub, double click on this project's name in the Projects section.
 8. Once the project is open, expand the scenes folder and open the Default scene.
+
+---
+
+## Important code helpers being used in this project
+
+- Editor Toolbox - Used for Attributes in the Unity Inspector found here: [Editor Toolbox](https://github.com/arimger/Unity-Editor-Toolbox)
+- NaughtyAttributes - Used for Attributes in the Unity Inspector found here: [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
+- Serialized Dictionary Lite - Used to see dictionaries in the Unity Inspector found here: [Serialized Dictionary Lite](https://assetstore.unity.com/packages/tools/utilities/serialized-dictionary-lite-110992)
+- JSON Object - Used to convert a GameObject into a JSON object found here: [JSON Object](https://assetstore.unity.com/packages/tools/input-management/json-object-710)
+- StandaloneFileBrowser - Used to open a file/folder dialog for the player to select a file/folder during gameplay/saving found here: [Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
