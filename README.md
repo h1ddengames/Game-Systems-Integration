@@ -84,3 +84,71 @@ namespace h1ddengames {
 ```
 
 ---
+
+## Local Webserver Setup
+
+## Creating a Docker container
+
+- Creates a Docker container, then maps port 80 in the container to port 80 on the host, then maps port 443 in the container to port 443 on the host, then names the container 'webserver', then mounts the folder as '/data', and uses a Ubuntu image.
+
+    ```docker
+    docker run -dit -p 80:80 -p 443:443 --name webserver -v C:/Users/h1ddengames/Desktop/Items/Builds/WebGL:/data ubuntu
+    ```
+
+## Logging into the Docker container
+
+- Logs into the container using /bin/bash shell
+
+    ```docker
+    docker exec -it webserver /bin/bash
+    ```
+
+## Stopping the Docker container
+
+- Stops the docker container but does not delete it. Can be restarted at a later time.
+
+    ```docker
+    docker stop webserver
+    ```
+
+## Deleting the Docker container
+
+- Deletes the Docker container and all the data stored within.
+
+    ```docker
+    docker rm webserver
+    ```
+
+## Starts the Docker container
+
+- Starts the docker container
+
+    ```docker
+    docker start webserver
+    ```
+
+## Setting up the server instance
+
+- Updates the package list, then upgrades all currently installed software, and finally installs apache2
+
+    ```bash
+    apt update -y && apt upgrade -y && apt install apache2 -y
+    ```
+
+## Starting the apache service
+
+- Starts the apache service.
+
+    ```bash
+    service apache2 start
+    ```
+
+## Moving files to the hosting directory
+
+- Copies recursively and asks if files should be overwritten if the names are the same.
+
+    ```bash
+    cp -ir /data/* /var/www/html/
+    ```
+
+---
