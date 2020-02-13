@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: a25e2ac6ec6e8b84f9b0bf1d06cb22df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 969907029133331976
+    second: Sword sheet_0
+  - first:
+      213: 8892083230722587702
+    second: The Flame
+  - first:
+      213: 2989664041601356201
+    second: Sword sheet_2
+  - first:
+      213: -6716569946771782710
+    second: Sword sheet_3
+  - first:
+      213: -7193656682695143428
+    second: Sword sheet_4
+  - first:
+      213: -7700675566845382763
+    second: Sword sheet_5
+  - first:
+      213: -9139012437921862920
+    second: Sword sheet_6
+  - first:
+      213: -1942379013639868828
+    second: Sword sheet_7
+  - first:
+      213: 6204688934097503882
+    second: Sword sheet_8
+  - first:
+      213: -8464264461864067857
+    second: Sword sheet_9
+  - first:
+      213: 4286379507963754272
+    second: Sword sheet_10
+  - first:
+      213: -4486917845787343485
+    second: Sword sheet_11
+  - first:
+      213: -5980257496398722231
+    second: Sword sheet_12
+  - first:
+      213: 6173923542428951574
+    second: Sword sheet_13
+  - first:
+      213: 9089167407085594983
+    second: Sword sheet_14
+  - first:
+      213: 8823678194257670051
+    second: Sword sheet_15
+  - first:
+      213: 4252297154026925978
+    second: Sword sheet_16
+  - first:
+      213: -1491182533490692430
+    second: Sword sheet_17
+  - first:
+      213: -8049589647352836815
+    second: Sword sheet_18
+  - first:
+      213: 2591893776199792045
+    second: Sword sheet_19
+  - first:
+      213: 524756757467296297
+    second: Sword sheet_20
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: 2
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sword sheet_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 738
+        width: 39
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e85a0ed4dc57d00800000000000000
+      internalID: 969907029133331976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Flame
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 721
+        width: 67
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5341, y: 0.30960885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63c7d680696076b70800000000000000
+      internalID: 8892083230722587702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_2
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 688
+        width: 89
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1586d1b9b6d7920800000000000000
+      internalID: 2989664041601356201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_3
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 688
+        width: 89
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac38a952833f9c2a0800000000000000
+      internalID: -6716569946771782710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_4
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 686
+        width: 117
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff47d75c5ffa2c90800000000000000
+      internalID: -7193656682695143428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_5
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 686
+        width: 118
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59fa6a33f54b12590800000000000000
+      internalID: -7700675566845382763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_6
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 699
+        width: 40
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fa6ac7bb94bb2180800000000000000
+      internalID: -9139012437921862920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_7
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 691
+        width: 43
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46e62d804984b05e0800000000000000
+      internalID: -1942379013639868828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_8
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 699
+        width: 41
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86cda236bb7b1650800000000000000
+      internalID: 6204688934097503882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_9
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 688
+        width: 90
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec11a94154e88a80800000000000000
+      internalID: -8464264461864067857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_10
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 688
+        width: 89
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02771b8c3774c7b30800000000000000
+      internalID: 4286379507963754272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_11
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 431
+        width: 39
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3850c71fdf34bb1c0800000000000000
+      internalID: -4486917845787343485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_12
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 431
+        width: 39
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b89c5ed7bd10da0800000000000000
+      internalID: -5980257496398722231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_13
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 431
+        width: 38
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61426e040ce2ea550800000000000000
+      internalID: 6173923542428951574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_14
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 281
+        width: 99
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 769256ba995332e70800000000000000
+      internalID: 9089167407085594983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_15
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 345
+        width: 117
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3afa61d5190047a70800000000000000
+      internalID: 8823678194257670051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_16
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 344
+        width: 117
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9fed216bb1330b30800000000000000
+      internalID: 4252297154026925978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_17
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 355
+        width: 42
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2be250ce2614e4be0800000000000000
+      internalID: -1491182533490692430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_18
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 355
+        width: 40
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d4fd14ddc1a4090800000000000000
+      internalID: -8049589647352836815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_19
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 350
+        width: 92
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da53fe138a148f320800000000000000
+      internalID: 2591893776199792045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword sheet_20
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 349
+        width: 89
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 922f25a9d7f484700800000000000000
+      internalID: 524756757467296297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
