@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: h1ddengames
   productName: Game Systems Integration
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -578,6 +578,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: RHSD
+    13: RHSD
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
