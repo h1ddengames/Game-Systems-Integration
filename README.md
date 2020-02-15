@@ -45,11 +45,23 @@ If you want to download this project in order to extend/modify it yourself or if
 
 ## Important code helpers being used in this project
 
-- Editor Toolbox - Used for Attributes in the Unity Inspector found here: [Editor Toolbox](https://github.com/arimger/Unity-Editor-Toolbox)
+1. [Clean Settings UI](https://assetstore.unity.com/packages/tools/gui/clean-settings-ui-65588) - by Landan Lloyd
+2. [Dotween](http://dotween.demigiant.com/) - by Demigiant
+3. [Editor Toolbox](https://github.com/arimger/Unity-Editor-Toolbox) - by Arimger
+4. [JSON Object](https://assetstore.unity.com/packages/tools/input-management/json-object-710) - by Defective Studios
+5. [Naughty Attributes](https://assetstore.unity.com/packages/tools/utilities/naughtyattributes-129996) - by dbrizov
+6. [CharacterController2D](https://github.com/prime31/CharacterController2D) - by prime31
+7. [SerializableDictionary](https://assetstore.unity.com/packages/tools/utilities/serialized-dictionary-lite-110992) - by Rotary Heart
+8. [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - by gkngkc
+9. [Lean Touch](https://assetstore.unity.com/packages/tools/input-management/lean-touch-30111) - by Carlos Wilkes
+10. [Lean GUI](https://assetstore.unity.com/packages/tools/gui/lean-gui-72138) - by Carlos Wilkes
+11. [Lean Pool](https://assetstore.unity.com/packages/tools/utilities/lean-pool-35666) - by Carlos Wilkes
+
+<!-- - Editor Toolbox - Used for Attributes in the Unity Inspector found here: [Editor Toolbox](https://github.com/arimger/Unity-Editor-Toolbox)
 - NaughtyAttributes - Used for Attributes in the Unity Inspector found here: [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 - Serialized Dictionary Lite - Used to see dictionaries in the Unity Inspector found here: [Serialized Dictionary Lite](https://assetstore.unity.com/packages/tools/utilities/serialized-dictionary-lite-110992)
 - JSON Object - Used to convert a GameObject into a JSON object found here: [JSON Object](https://assetstore.unity.com/packages/tools/input-management/json-object-710)
-- StandaloneFileBrowser - Used to open a file/folder dialog for the player to select a file/folder during gameplay/saving found here: [Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
+- StandaloneFileBrowser - Used to open a file/folder dialog for the player to select a file/folder during gameplay/saving found here: [Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser) -->
 
 ---
 
