@@ -46,11 +46,27 @@ Preset:
     value: 1.25
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: jumpDelay
+    value: 0.25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxNumberOfJumps
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: isAllowedToMove
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isGrounded
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: currentNumberOfJumps
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_lastJumped
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -62,64 +78,32 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: boundingBox
+    propertyPath: defaultBoxColliderSize.x
+    value: 0.67177343
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: defaultBoxColliderSize.y
+    value: 1.02194
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: levelBoundingBox
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: animator
+    propertyPath: characterAnimator
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: boxCollider
+    propertyPath: characterBoxCollider2D
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: spriteRenderer
+    propertyPath: characterSpriteRenderer
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.size
-    value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-    value: Jump
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-    value: 1
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-    value: UnityEngine.Object, UnityEngine
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
     value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: isOnGroundEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isNotOnGroundEvent.m_PersistentCalls.m_Calls.Array.size

@@ -268,7 +268,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Velocity
+  - m_Name: velocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -338,7 +338,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Velocity
+  m_BlendParameter: velocity
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 0.1
