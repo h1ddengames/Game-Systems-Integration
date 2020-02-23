@@ -31,6 +31,7 @@ namespace h1ddengames {
         [BoxGroup("Main Setting"), Tooltip("The number of times the player can jump before having to touch the ground."), SerializeField] private int maxNumberOfJumps = 2;
 
         [BoxGroup("Quick Information"), Tooltip("Only rejects player input. All physics based movement will continue to work as intended."), SerializeField] private bool isAllowedToMove = true;
+        [BoxGroup("Quick Information"), Tooltip("Player receives constant gravity as long as isGrounded is false."), SerializeField] private bool isGravityOn = true;
         [BoxGroup("Quick Information"), Tooltip("Is set to true when the character intersects a collider beneath them in the previous frame."), SerializeField] private bool isGrounded;
         [BoxGroup("Quick Information"), Tooltip("A count of how many times the player can jump without having to touch the ground."), SerializeField] private int currentNumberOfJumps;
         [BoxGroup("Quick Information"), Tooltip("The last time in milliseconds that the player has jumped."), SerializeField] private float m_lastJumped;
@@ -59,6 +60,7 @@ namespace h1ddengames {
         public float JumpDelay { get => jumpDelay; set => jumpDelay = value; }
         public int MaxNumberOfJumps { get => maxNumberOfJumps; set => maxNumberOfJumps = value; }
         public bool IsAllowedToMove { get => isAllowedToMove; set => isAllowedToMove = value; }
+        public bool IsGravityOn { get => isGravityOn; set => isGravityOn = value; }
         public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
         public int CurrentNumberOfJumps { get => currentNumberOfJumps; set => currentNumberOfJumps = value; }
         public float LastJumped { get => m_lastJumped; set => m_lastJumped = value; }
@@ -160,7 +162,9 @@ namespace h1ddengames {
                 velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.deltaTime);
             }
 
-            velocity.y += Physics2D.gravity.y * Time.deltaTime;
+            if(IsGravityOn) {
+                velocity.y += Physics2D.gravity.y * Time.deltaTime;
+            }
 
             transform.Translate(velocity * Time.deltaTime);
         }
@@ -180,6 +184,10 @@ namespace h1ddengames {
                 // Ignore bounding box for the level.
                 // Used to ignore a Bounding Shape 2D that is required by Cinemachine Confiner component.
                 if (hit == LevelBoundingBox)
+                    continue;
+
+                // Ignore any collider that has isTrigger option checked.
+                if(hit.isTrigger)
                     continue;
 
                 ColliderDistance2D colliderDistance = hit.Distance(CharacterBoxCollider2D);
