@@ -58,6 +58,10 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: isGravityOn
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: isGrounded
     value: 0
     objectReference: {fileID: 0}

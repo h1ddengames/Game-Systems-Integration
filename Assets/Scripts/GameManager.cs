@@ -18,6 +18,8 @@ namespace h1ddengames {
 		[SerializeField] private CharacterController2D playerCharacterController2D;
 		[SerializeField] private SpriteRenderer playerSpriteRenderer;
 		[SerializeField] private BoxCollider2D playerboxCollider2D;
+		//[SerializeField] private Rigidbody2D playerRigidBody2D;
+		[SerializeField] private PolygonCollider2D levelBoundingBox;
 		#endregion
 
 		#region Private Fields
@@ -29,6 +31,8 @@ namespace h1ddengames {
 		public CharacterController2D PlayerCharacterController2D { get => playerCharacterController2D; set => playerCharacterController2D = value; }
 		public SpriteRenderer PlayerSpriteRenderer { get => playerSpriteRenderer; set => playerSpriteRenderer = value; }
 		public BoxCollider2D PlayerboxCollider2D { get => playerboxCollider2D; set => playerboxCollider2D = value; }
+		//public Rigidbody2D PlayerRigidBody2D { get => playerRigidBody2D; set => playerRigidBody2D = value; }
+		public PolygonCollider2D LevelBoundingBox { get => levelBoundingBox; set => levelBoundingBox = value; }
 		#endregion
 
 		#region My Methods

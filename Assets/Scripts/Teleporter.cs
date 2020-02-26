@@ -12,8 +12,9 @@ using RotaryHeart.Lib.SerializableDictionary;
 namespace h1ddengames {
 	public class Teleporter : MonoBehaviour {
 		#region Exposed Fields
-		[BoxGroup("Configuration"), Tooltip("Which teleporter should this teleporter teleport to?"), SerializeField] Teleporter linkedTeleporter;
-		[BoxGroup("Configuration"), Tooltip("How fast should the player be teleported?"), SerializeField] float speed = 10.0f;
+		[BoxGroup("Configuration"), Tooltip("Which teleporter should this teleporter teleport to?"), SerializeField] private Teleporter linkedTeleporter;
+		[BoxGroup("Configuration"), Tooltip("How fast should the player be teleported?"), SerializeField] private float speed = 10.0f;
+		[BoxGroup("Configuration"), SerializeField] private bool isUsingTeleporter;
 
 		[BoxGroup("Inputs"), Tooltip("What key should be pressed in order to activate the teleporter?"), SerializeField] private KeyCode activateTeleporterKey = KeyCode.W;
 
@@ -52,6 +53,7 @@ namespace h1ddengames {
 			GameManager.Instance.PlayerCharacterController2D.IsGravityOn = false;
 			GameManager.Instance.PlayerboxCollider2D.enabled = false;
 			IsMoving = true;
+			isUsingTeleporter = true;
 		}
 		#endregion
 
@@ -65,6 +67,12 @@ namespace h1ddengames {
 		}
 
 		void Update() {
+			//if (isUsingTeleporter) {
+			//	GameManager.Instance.PlayerRigidBody2D.bodyType = RigidbodyType2D.Static;
+			//} else {
+			//	GameManager.Instance.PlayerRigidBody2D.bodyType = RigidbodyType2D.Dynamic;
+			//}
+
 			if (isInCollider && Input.GetKeyDown(activateTeleporterKey)) {
 				pressedActivateKeyEvent.Invoke();
 			}
@@ -80,6 +88,8 @@ namespace h1ddengames {
 
 				// Move the player to the linked teleporter at a constant speed.
 				GameManager.Instance.Player.transform.position = Vector2.MoveTowards(GameManager.Instance.Player.transform.position, linkedTeleporter.transform.position, speed * Time.deltaTime);
+			} else {
+				isUsingTeleporter = false;
 			}
 		}
 
