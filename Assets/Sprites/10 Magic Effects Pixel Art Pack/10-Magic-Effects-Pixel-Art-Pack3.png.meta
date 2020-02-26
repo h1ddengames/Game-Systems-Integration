@@ -1,0 +1,1399 @@
+fileFormatVersion: 2
+guid: 50b651b9733348c498f961a8754f09d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7421406693232409032
+    second: 10-Magic-Effects-Pixel-Art-Pack3_0
+  - first:
+      213: 8652058242207722236
+    second: 10-Magic-Effects-Pixel-Art-Pack3_1
+  - first:
+      213: 8590337952694920539
+    second: 10-Magic-Effects-Pixel-Art-Pack3_2
+  - first:
+      213: -3744017900610568152
+    second: 10-Magic-Effects-Pixel-Art-Pack3_3
+  - first:
+      213: 373787988566131707
+    second: 10-Magic-Effects-Pixel-Art-Pack3_4
+  - first:
+      213: -3735407522431107299
+    second: 10-Magic-Effects-Pixel-Art-Pack3_5
+  - first:
+      213: -2300186711704465983
+    second: 10-Magic-Effects-Pixel-Art-Pack3_6
+  - first:
+      213: 6657084898629229187
+    second: 10-Magic-Effects-Pixel-Art-Pack3_7
+  - first:
+      213: 8169952675998113224
+    second: 10-Magic-Effects-Pixel-Art-Pack3_8
+  - first:
+      213: 8524176590504390817
+    second: 10-Magic-Effects-Pixel-Art-Pack3_9
+  - first:
+      213: 9157340575459702665
+    second: 10-Magic-Effects-Pixel-Art-Pack3_10
+  - first:
+      213: -1741918231003390200
+    second: 10-Magic-Effects-Pixel-Art-Pack3_11
+  - first:
+      213: -1426062709668547404
+    second: 10-Magic-Effects-Pixel-Art-Pack3_12
+  - first:
+      213: 8984345167638408977
+    second: 10-Magic-Effects-Pixel-Art-Pack3_13
+  - first:
+      213: -2152537123487418820
+    second: 10-Magic-Effects-Pixel-Art-Pack3_14
+  - first:
+      213: -4158036064226235746
+    second: 10-Magic-Effects-Pixel-Art-Pack3_15
+  - first:
+      213: 4545770266817220382
+    second: 10-Magic-Effects-Pixel-Art-Pack3_16
+  - first:
+      213: -2687463522811192934
+    second: 10-Magic-Effects-Pixel-Art-Pack3_17
+  - first:
+      213: -5992120789901542497
+    second: 10-Magic-Effects-Pixel-Art-Pack3_18
+  - first:
+      213: 4433774181355132783
+    second: 10-Magic-Effects-Pixel-Art-Pack3_19
+  - first:
+      213: 3347820612406173898
+    second: 10-Magic-Effects-Pixel-Art-Pack3_20
+  - first:
+      213: -3109552056833234632
+    second: 10-Magic-Effects-Pixel-Art-Pack3_21
+  - first:
+      213: 5517500361178477596
+    second: 10-Magic-Effects-Pixel-Art-Pack3_22
+  - first:
+      213: -8715277534485035766
+    second: 10-Magic-Effects-Pixel-Art-Pack3_23
+  - first:
+      213: 7356016600654528000
+    second: 10-Magic-Effects-Pixel-Art-Pack3_24
+  - first:
+      213: 6427824105006560046
+    second: 10-Magic-Effects-Pixel-Art-Pack3_25
+  - first:
+      213: 5763366122619533381
+    second: 10-Magic-Effects-Pixel-Art-Pack3_26
+  - first:
+      213: -7629343088106582170
+    second: 10-Magic-Effects-Pixel-Art-Pack3_27
+  - first:
+      213: 4136772030733507469
+    second: 10-Magic-Effects-Pixel-Art-Pack3_28
+  - first:
+      213: -4428128110728531924
+    second: 10-Magic-Effects-Pixel-Art-Pack3_29
+  - first:
+      213: 7208001917452358207
+    second: 10-Magic-Effects-Pixel-Art-Pack3_30
+  - first:
+      213: 1608265995442898371
+    second: 10-Magic-Effects-Pixel-Art-Pack3_31
+  - first:
+      213: -922035478749237529
+    second: 10-Magic-Effects-Pixel-Art-Pack3_32
+  - first:
+      213: 6160074685524113267
+    second: 10-Magic-Effects-Pixel-Art-Pack3_33
+  - first:
+      213: -3401936502062952865
+    second: 10-Magic-Effects-Pixel-Art-Pack3_34
+  - first:
+      213: -2006188633906607995
+    second: 10-Magic-Effects-Pixel-Art-Pack3_35
+  - first:
+      213: -4772462389593550624
+    second: 10-Magic-Effects-Pixel-Art-Pack3_36
+  - first:
+      213: 227803063440516505
+    second: 10-Magic-Effects-Pixel-Art-Pack3_37
+  - first:
+      213: 745463711936419334
+    second: 10-Magic-Effects-Pixel-Art-Pack3_38
+  - first:
+      213: 7478761742346276818
+    second: 10-Magic-Effects-Pixel-Art-Pack3_39
+  - first:
+      213: -2005763185063758507
+    second: 10-Magic-Effects-Pixel-Art-Pack3_40
+  - first:
+      213: 128971194219790023
+    second: 10-Magic-Effects-Pixel-Art-Pack3_41
+  - first:
+      213: 1122518922236450642
+    second: 10-Magic-Effects-Pixel-Art-Pack3_42
+  - first:
+      213: -976070502839833916
+    second: 10-Magic-Effects-Pixel-Art-Pack3_43
+  - first:
+      213: -3851047827478337372
+    second: 10-Magic-Effects-Pixel-Art-Pack3_44
+  - first:
+      213: 5742184268133842553
+    second: 10-Magic-Effects-Pixel-Art-Pack3_45
+  - first:
+      213: 737189567046705755
+    second: 10-Magic-Effects-Pixel-Art-Pack3_46
+  - first:
+      213: -4343629925987548909
+    second: 10-Magic-Effects-Pixel-Art-Pack3_47
+  - first:
+      213: 6260180562766980150
+    second: 10-Magic-Effects-Pixel-Art-Pack3_48
+  - first:
+      213: -7730882437176589877
+    second: 10-Magic-Effects-Pixel-Art-Pack3_49
+  - first:
+      213: -3901265695998247143
+    second: 10-Magic-Effects-Pixel-Art-Pack3_50
+  - first:
+      213: 7671356528382540129
+    second: 10-Magic-Effects-Pixel-Art-Pack3_51
+  - first:
+      213: 2618021085913065660
+    second: 10-Magic-Effects-Pixel-Art-Pack3_52
+  - first:
+      213: 6349093733074102281
+    second: 10-Magic-Effects-Pixel-Art-Pack3_53
+  - first:
+      213: -6463866082279578719
+    second: 10-Magic-Effects-Pixel-Art-Pack3_54
+  - first:
+      213: 1302483736135107115
+    second: 10-Magic-Effects-Pixel-Art-Pack3_55
+  - first:
+      213: -3309469769207460680
+    second: 10-Magic-Effects-Pixel-Art-Pack3_56
+  - first:
+      213: 2414861238960385909
+    second: 10-Magic-Effects-Pixel-Art-Pack3_57
+  - first:
+      213: 1591457089729359637
+    second: 10-Magic-Effects-Pixel-Art-Pack3_58
+  - first:
+      213: 2737836717528050863
+    second: 10-Magic-Effects-Pixel-Art-Pack3_59
+  - first:
+      213: 1574872843067777637
+    second: 10-Magic-Effects-Pixel-Art-Pack3_60
+  - first:
+      213: -6691587730884132338
+    second: 10-Magic-Effects-Pixel-Art-Pack3_61
+  - first:
+      213: -4107404960285226651
+    second: 10-Magic-Effects-Pixel-Art-Pack3_62
+  - first:
+      213: 6433005191737040567
+    second: 10-Magic-Effects-Pixel-Art-Pack3_63
+  - first:
+      213: 1670824742415623653
+    second: 10-Magic-Effects-Pixel-Art-Pack3_64
+  - first:
+      213: -1645150393269065965
+    second: 10-Magic-Effects-Pixel-Art-Pack3_65
+  - first:
+      213: -2181105534866997258
+    second: 10-Magic-Effects-Pixel-Art-Pack3_66
+  - first:
+      213: -3421450276382259575
+    second: 10-Magic-Effects-Pixel-Art-Pack3_67
+  - first:
+      213: 7468973862347708520
+    second: 10-Magic-Effects-Pixel-Art-Pack3_68
+  - first:
+      213: 8001881994643865688
+    second: 10-Magic-Effects-Pixel-Art-Pack3_69
+  - first:
+      213: -112310561352886589
+    second: 10-Magic-Effects-Pixel-Art-Pack3_70
+  - first:
+      213: -8369003788382680144
+    second: 10-Magic-Effects-Pixel-Art-Pack3_71
+  - first:
+      213: -8282178482639927078
+    second: 10-Magic-Effects-Pixel-Art-Pack3_72
+  - first:
+      213: -241695846564844151
+    second: 10-Magic-Effects-Pixel-Art-Pack3_73
+  - first:
+      213: -7896397603665096940
+    second: 10-Magic-Effects-Pixel-Art-Pack3_74
+  - first:
+      213: 9022341203920733027
+    second: 10-Magic-Effects-Pixel-Art-Pack3_75
+  - first:
+      213: -908236886449354818
+    second: 10-Magic-Effects-Pixel-Art-Pack3_76
+  - first:
+      213: 5213199457708631643
+    second: 10-Magic-Effects-Pixel-Art-Pack3_77
+  - first:
+      213: 2315778942090870014
+    second: 10-Magic-Effects-Pixel-Art-Pack3_78
+  - first:
+      213: -4500090756811124974
+    second: 10-Magic-Effects-Pixel-Art-Pack3_79
+  - first:
+      213: 815570610612005149
+    second: 10-Magic-Effects-Pixel-Art-Pack3_80
+  - first:
+      213: 4547738624007669865
+    second: 10-Magic-Effects-Pixel-Art-Pack3_81
+  - first:
+      213: -3711048057114628741
+    second: 10-Magic-Effects-Pixel-Art-Pack3_82
+  - first:
+      213: -4185948696854164792
+    second: 10-Magic-Effects-Pixel-Art-Pack3_83
+  - first:
+      213: -5231660406577950425
+    second: 10-Magic-Effects-Pixel-Art-Pack3_84
+  - first:
+      213: 6324979748401569035
+    second: 10-Magic-Effects-Pixel-Art-Pack3_85
+  - first:
+      213: 7216186480457361259
+    second: 10-Magic-Effects-Pixel-Art-Pack3_86
+  - first:
+      213: -7004023341292250447
+    second: 10-Magic-Effects-Pixel-Art-Pack3_87
+  - first:
+      213: -6660393929375418603
+    second: 10-Magic-Effects-Pixel-Art-Pack3_88
+  - first:
+      213: -3985238909363377452
+    second: 10-Magic-Effects-Pixel-Art-Pack3_89
+  - first:
+      213: 6232682027376642992
+    second: 10-Magic-Effects-Pixel-Art-Pack3_90
+  - first:
+      213: 4078957896842376012
+    second: 10-Magic-Effects-Pixel-Art-Pack3_91
+  - first:
+      213: 1349422846193149850
+    second: 10-Magic-Effects-Pixel-Art-Pack3_92
+  - first:
+      213: -3387301944291896639
+    second: 10-Magic-Effects-Pixel-Art-Pack3_93
+  - first:
+      213: -4552321533974084727
+    second: 10-Magic-Effects-Pixel-Art-Pack3_94
+  - first:
+      213: 4213178650191592421
+    second: 10-Magic-Effects-Pixel-Art-Pack3_95
+  - first:
+      213: 2487091290749843787
+    second: 10-Magic-Effects-Pixel-Art-Pack3_96
+  - first:
+      213: 5394317714734570654
+    second: 10-Magic-Effects-Pixel-Art-Pack3_97
+  - first:
+      213: 6990003673289266815
+    second: 10-Magic-Effects-Pixel-Art-Pack3_98
+  - first:
+      213: 1548549569665586945
+    second: 10-Magic-Effects-Pixel-Art-Pack3_99
+  - first:
+      213: 6556054062587932361
+    second: 10-Magic-Effects-Pixel-Art-Pack3_100
+  - first:
+      213: 2162557838341464673
+    second: 10-Magic-Effects-Pixel-Art-Pack3_101
+  - first:
+      213: -7516967054282935097
+    second: 10-Magic-Effects-Pixel-Art-Pack3_102
+  - first:
+      213: 5355219919366514384
+    second: 10-Magic-Effects-Pixel-Art-Pack3_103
+  - first:
+      213: 5736294769983743607
+    second: 10-Magic-Effects-Pixel-Art-Pack3_104
+  - first:
+      213: 5252689028141155196
+    second: 10-Magic-Effects-Pixel-Art-Pack3_105
+  - first:
+      213: 9027821875020272705
+    second: 10-Magic-Effects-Pixel-Art-Pack3_106
+  - first:
+      213: -6675275934546877356
+    second: 10-Magic-Effects-Pixel-Art-Pack3_107
+  - first:
+      213: -8727334950231973168
+    second: 10-Magic-Effects-Pixel-Art-Pack3_108
+  - first:
+      213: -3680454886835951594
+    second: 10-Magic-Effects-Pixel-Art-Pack3_109
+  - first:
+      213: -9096380217040996819
+    second: 10-Magic-Effects-Pixel-Art-Pack3_110
+  - first:
+      213: 5627318140160722567
+    second: 10-Magic-Effects-Pixel-Art-Pack3_111
+  - first:
+      213: 3596453171243209405
+    second: 10-Magic-Effects-Pixel-Art-Pack3_112
+  - first:
+      213: -3365315484574396147
+    second: 10-Magic-Effects-Pixel-Art-Pack3_113
+  - first:
+      213: 6061531871733853849
+    second: 10-Magic-Effects-Pixel-Art-Pack3_114
+  - first:
+      213: 8686799122142827690
+    second: 10-Magic-Effects-Pixel-Art-Pack3_115
+  - first:
+      213: -1307880562603079025
+    second: 10-Magic-Effects-Pixel-Art-Pack3_116
+  - first:
+      213: -7525438565059966156
+    second: 10-Magic-Effects-Pixel-Art-Pack3_117
+  - first:
+      213: -673465519169940678
+    second: 10-Magic-Effects-Pixel-Art-Pack3_118
+  - first:
+      213: -2707892399371438937
+    second: 10-Magic-Effects-Pixel-Art-Pack3_119
+  - first:
+      213: -4858084668987538621
+    second: 10-Magic-Effects-Pixel-Art-Pack3_120
+  - first:
+      213: -6398962870031739335
+    second: 10-Magic-Effects-Pixel-Art-Pack3_121
+  - first:
+      213: 3688847838678194095
+    second: 10-Magic-Effects-Pixel-Art-Pack3_122
+  - first:
+      213: -7313848779831373533
+    second: 10-Magic-Effects-Pixel-Art-Pack3_123
+  - first:
+      213: -2984074094108403501
+    second: 10-Magic-Effects-Pixel-Art-Pack3_124
+  - first:
+      213: 2441764328266619782
+    second: 10-Magic-Effects-Pixel-Art-Pack3_125
+  - first:
+      213: 8375241572402228453
+    second: 10-Magic-Effects-Pixel-Art-Pack3_126
+  - first:
+      213: -5914505525048585884
+    second: 10-Magic-Effects-Pixel-Art-Pack3_127
+  - first:
+      213: 2664799182618929711
+    second: 10-Magic-Effects-Pixel-Art-Pack3_128
+  - first:
+      213: 2007734416964361991
+    second: 10-Magic-Effects-Pixel-Art-Pack3_129
+  - first:
+      213: 1288086498477080560
+    second: 10-Magic-Effects-Pixel-Art-Pack3_130
+  - first:
+      213: -2190894854145902987
+    second: 10-Magic-Effects-Pixel-Art-Pack3_131
+  - first:
+      213: 6027272575034851148
+    second: 10-Magic-Effects-Pixel-Art-Pack3_132
+  - first:
+      213: -3532516951051924047
+    second: 10-Magic-Effects-Pixel-Art-Pack3_133
+  - first:
+      213: -5052309684933071041
+    second: 10-Magic-Effects-Pixel-Art-Pack3_134
+  - first:
+      213: -6903642537341569177
+    second: 10-Magic-Effects-Pixel-Art-Pack3_135
+  - first:
+      213: -8171879996401091413
+    second: 10-Magic-Effects-Pixel-Art-Pack3_136
+  - first:
+      213: 2627379411710328836
+    second: 10-Magic-Effects-Pixel-Art-Pack3_137
+  - first:
+      213: -823329253501939297
+    second: 10-Magic-Effects-Pixel-Art-Pack3_138
+  - first:
+      213: -6313770251511718733
+    second: 10-Magic-Effects-Pixel-Art-Pack3_139
+  - first:
+      213: -13187184980411125
+    second: 10-Magic-Effects-Pixel-Art-Pack3_140
+  - first:
+      213: -2409414063083557955
+    second: 10-Magic-Effects-Pixel-Art-Pack3_141
+  - first:
+      213: -7470954576217445614
+    second: 10-Magic-Effects-Pixel-Art-Pack3_142
+  - first:
+      213: 4984317172709231577
+    second: 10-Magic-Effects-Pixel-Art-Pack3_143
+  - first:
+      213: -936229414059591872
+    second: 10-Magic-Effects-Pixel-Art-Pack3_144
+  - first:
+      213: -3847441953404859292
+    second: 10-Magic-Effects-Pixel-Art-Pack3_145
+  - first:
+      213: -4103013947742168395
+    second: 10-Magic-Effects-Pixel-Art-Pack3_146
+  - first:
+      213: 7481990035645927086
+    second: 10-Magic-Effects-Pixel-Art-Pack3_147
+  - first:
+      213: -4938054602136976560
+    second: 10-Magic-Effects-Pixel-Art-Pack3_148
+  - first:
+      213: 865109929668093853
+    second: 10-Magic-Effects-Pixel-Art-Pack3_149
+  - first:
+      213: -942047423813526984
+    second: 10-Magic-Effects-Pixel-Art-Pack3_150
+  - first:
+      213: -6186140511516716195
+    second: 10-Magic-Effects-Pixel-Art-Pack3_151
+  - first:
+      213: 5104009244848216264
+    second: 10-Magic-Effects-Pixel-Art-Pack3_152
+  - first:
+      213: 811770630026371677
+    second: 10-Magic-Effects-Pixel-Art-Pack3_153
+  - first:
+      213: 5666544222234589342
+    second: 10-Magic-Effects-Pixel-Art-Pack3_154
+  - first:
+      213: -1342607995520919018
+    second: 10-Magic-Effects-Pixel-Art-Pack3_155
+  - first:
+      213: -3463071637941068079
+    second: 10-Magic-Effects-Pixel-Art-Pack3_156
+  - first:
+      213: 2786418816164574449
+    second: 10-Magic-Effects-Pixel-Art-Pack3_157
+  - first:
+      213: -1095317907253514415
+    second: 10-Magic-Effects-Pixel-Art-Pack3_158
+  - first:
+      213: 4958065923447966894
+    second: 10-Magic-Effects-Pixel-Art-Pack3_159
+  - first:
+      213: 7883051533942396397
+    second: 10-Magic-Effects-Pixel-Art-Pack3_160
+  - first:
+      213: -6131853053880888162
+    second: 10-Magic-Effects-Pixel-Art-Pack3_161
+  - first:
+      213: -6972243255791823722
+    second: 10-Magic-Effects-Pixel-Art-Pack3_162
+  - first:
+      213: -7458234069386804049
+    second: 10-Magic-Effects-Pixel-Art-Pack3_163
+  - first:
+      213: -1532986074253543238
+    second: 10-Magic-Effects-Pixel-Art-Pack3_164
+  - first:
+      213: 1548393376192969081
+    second: 10-Magic-Effects-Pixel-Art-Pack3_165
+  - first:
+      213: -8532565894969176736
+    second: 10-Magic-Effects-Pixel-Art-Pack3_166
+  - first:
+      213: -7909729732022821464
+    second: 10-Magic-Effects-Pixel-Art-Pack3_167
+  - first:
+      213: -7097479142514603851
+    second: 10-Magic-Effects-Pixel-Art-Pack3_168
+  - first:
+      213: 7471147233445656764
+    second: 10-Magic-Effects-Pixel-Art-Pack3_169
+  - first:
+      213: -3956532425199838132
+    second: 10-Magic-Effects-Pixel-Art-Pack3_170
+  - first:
+      213: 7461644733620664858
+    second: 10-Magic-Effects-Pixel-Art-Pack3_171
+  - first:
+      213: 5251246794349758243
+    second: 10-Magic-Effects-Pixel-Art-Pack3_172
+  - first:
+      213: -5997290179423198341
+    second: 10-Magic-Effects-Pixel-Art-Pack3_173
+  - first:
+      213: 6589348620108279412
+    second: 10-Magic-Effects-Pixel-Art-Pack3_174
+  - first:
+      213: -7631337334674892804
+    second: 10-Magic-Effects-Pixel-Art-Pack3_175
+  - first:
+      213: -5709777980200355012
+    second: 10-Magic-Effects-Pixel-Art-Pack3_176
+  - first:
+      213: 982302280059833765
+    second: 10-Magic-Effects-Pixel-Art-Pack3_177
+  - first:
+      213: -5156725775581407998
+    second: 10-Magic-Effects-Pixel-Art-Pack3_178
+  - first:
+      213: 684585374725672981
+    second: 10-Magic-Effects-Pixel-Art-Pack3_179
+  - first:
+      213: 8951887923712058941
+    second: 10-Magic-Effects-Pixel-Art-Pack3_180
+  - first:
+      213: 3885894843580909422
+    second: 10-Magic-Effects-Pixel-Art-Pack3_181
+  - first:
+      213: -30395268930617188
+    second: 10-Magic-Effects-Pixel-Art-Pack3_182
+  - first:
+      213: -6157311973080237428
+    second: 10-Magic-Effects-Pixel-Art-Pack3_183
+  - first:
+      213: 8775170311116001556
+    second: 10-Magic-Effects-Pixel-Art-Pack3_184
+  - first:
+      213: 5036585242456384462
+    second: 10-Magic-Effects-Pixel-Art-Pack3_185
+  - first:
+      213: -4532646391858984314
+    second: 10-Magic-Effects-Pixel-Art-Pack3_186
+  - first:
+      213: -8075233791896554496
+    second: 10-Magic-Effects-Pixel-Art-Pack3_187
+  - first:
+      213: -7304776446800385943
+    second: 10-Magic-Effects-Pixel-Art-Pack3_188
+  - first:
+      213: 1184345714601955392
+    second: 10-Magic-Effects-Pixel-Art-Pack3_189
+  - first:
+      213: 6967212132047736220
+    second: 10-Magic-Effects-Pixel-Art-Pack3_190
+  - first:
+      213: -8682991491080492043
+    second: 10-Magic-Effects-Pixel-Art-Pack3_191
+  - first:
+      213: -177922278976052389
+    second: 10-Magic-Effects-Pixel-Art-Pack3_192
+  - first:
+      213: -3214818191964470659
+    second: 10-Magic-Effects-Pixel-Art-Pack3_193
+  - first:
+      213: -8382336282403349021
+    second: 10-Magic-Effects-Pixel-Art-Pack3_194
+  - first:
+      213: -4699454911386554884
+    second: 10-Magic-Effects-Pixel-Art-Pack3_195
+  - first:
+      213: 5861936739083847955
+    second: 10-Magic-Effects-Pixel-Art-Pack3_196
+  - first:
+      213: -6220381985320427310
+    second: 10-Magic-Effects-Pixel-Art-Pack3_197
+  - first:
+      213: 5418532343374619467
+    second: 10-Magic-Effects-Pixel-Art-Pack3_198
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_0
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 732
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8360d2cceedd10990800000000000000
+      internalID: -7421406693232409032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_1
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 810
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa28c67129421870800000000000000
+      internalID: 8652058242207722236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_2
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 811
+        width: 54
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55efeabad2073770800000000000000
+      internalID: 8590337952694920539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_3
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 803
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82047695e839a0cc0800000000000000
+      internalID: -3744017900610568152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_4
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 794
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf3cac7f136ff2500800000000000000
+      internalID: 373787988566131707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_5
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 783
+        width: 69
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ffb2e36aa292cc0800000000000000
+      internalID: -3735407522431107299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_6
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 768
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd08c36f581410e0800000000000000
+      internalID: -2300186711704465983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 582
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a996ec177b26c50800000000000000
+      internalID: 6657084898629229187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_8
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 584
+        width: 118
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd9e9c2ca0816170800000000000000
+      internalID: 8169952675998113224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_9
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 586
+        width: 118
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0f6bf2275fb4670800000000000000
+      internalID: 8524176590504390817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_10
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 582
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987fb875cb8651f70800000000000000
+      internalID: 9157340575459702665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_11
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 582
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f1445199673d7e0800000000000000
+      internalID: -1741918231003390200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_12
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 584
+        width: 122
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b476ca658b953ce0800000000000000
+      internalID: -1426062709668547404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_15
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 590
+        width: 121
+        height: 120
+      alignment: 9
+      pivot: {x: -1.0685629, y: -0.73402977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a2884da30bb46c0800000000000000
+      internalID: -4158036064226235746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_27
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 594
+        width: 117
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f43d322e02f1690800000000000000
+      internalID: -7629343088106582170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_75
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 433
+        width: 54
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363c016c58bc53d70800000000000000
+      internalID: 9022341203920733027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_82
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 421
+        width: 117
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d674b3475bf7cc0800000000000000
+      internalID: -3711048057114628741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_84
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 395
+        width: 117
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721127824986567b0800000000000000
+      internalID: -5231660406577950425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_86
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 395
+        width: 127
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6723a8fe5b052460800000000000000
+      internalID: 7216186480457361259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_88
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 427
+        width: 109
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517f86f62078193a0800000000000000
+      internalID: -6660393929375418603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_89
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 437
+        width: 161
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4daa45e935691b8c0800000000000000
+      internalID: -3985238909363377452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_97
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 439
+        width: 163
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9cd95891677cda40800000000000000
+      internalID: 5394317714734570654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_98
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 435
+        width: 170
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7615156e4b710160800000000000000
+      internalID: 6990003673289266815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_107
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 200
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454ae9797e7ac53a0800000000000000
+      internalID: -6675275934546877356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_108
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 200
+        width: 130
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d262972a1742e680800000000000000
+      internalID: -8727334950231973168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_109
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 200
+        width: 140
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 618ea42c7c56cecc0800000000000000
+      internalID: -3680454886835951594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_117
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 322
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43b439e1f75409790800000000000000
+      internalID: -7525438565059966156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_128
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 312
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2aa0c5ecb44bf420800000000000000
+      internalID: 2664799182618929711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_193
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 94
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d728e7223eba263d0800000000000000
+      internalID: -3214818191964470659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_13
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 204
+        width: 145
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11fa590345eceac70800000000000000
+      internalID: 8984345167638408977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10-Magic-Effects-Pixel-Art-Pack3_14
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 209
+        width: 122
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36f0bc04e6a022e0800000000000000
+      internalID: -2152537123487418820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b42c63eb1ae7eec4d998a29d52c4a1be
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

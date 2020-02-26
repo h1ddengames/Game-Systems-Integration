@@ -210,6 +210,8 @@ namespace h1ddengames {
         #endregion
 
         #region Skill Methods
+        // TODO: Move the character while they stand on a moving platform.
+
         // TODO: Move the character with code
 
         // TODO: Allow one-way Platforms that allow players to passthrough from below and stand on top.
