@@ -12,33 +12,23 @@ using RotaryHeart.Lib.SerializableDictionary;
 
 namespace h1ddengames {
 	public class PlayerInput : MonoBehaviour {
-		[Serializable]
-		public class WayPoint {
-			[SerializeField] private Vector2 location;
-			[SerializeField] private bool hasArrived;
-
-			public WayPoint(Vector2 location, bool hasArrived) {
-				this.location = location;
-				this.hasArrived = hasArrived;
-			}
-
-			public Vector2 Location { get => location; set => location = value; }
-			public bool HasArrived { get => hasArrived; set => hasArrived = value; }
-		}
-
 		#region Exposed Fields
-		[BoxGroup("Configuration"), SerializeField] private Rigidbody2D playerRigidBody2D;
-		[BoxGroup("Configuration"), SerializeField] private BoxCollider2D playerBoxCollider2D;
-		[BoxGroup("Configuration"), SerializeField] private SpriteRenderer playerSpriteRenderer;
-		[BoxGroup("Configuration"), SerializeField] private Animator playerAnimator;
+		[InfoBox("RigidBody2D, BoxCollider2D, and Animator components should be on the top level GameObject. (The GameObject this script is attached to.)", InfoBoxType.Normal)]
+		[BoxGroup("References"), SerializeField] private Rigidbody2D playerRigidBody2D;
+		[BoxGroup("References"), SerializeField] private BoxCollider2D playerBoxCollider2D;
+		[BoxGroup("References"), SerializeField] private Animator playerAnimator;
+		[BoxGroup("References"), InfoBox("SpriteRenderer should be on the second level GameObject. (The GameObject that is a child of the GameObject this script is attached to.)", InfoBoxType.Normal), SerializeField] private SpriteRenderer playerSpriteRenderer;
+		[BoxGroup("References"), SerializeField] private PolygonCollider2D levelBoundingBox;
 
-		[BoxGroup("Configuration"), SerializeField] private float playerSpeed = 5.0f;
-		[BoxGroup("Configuration"), SerializeField] private float playerJumpHeight = 5.0f;
+		[BoxGroup("Configuration"), Tooltip("How fast should the player be able to move left and right?"), SerializeField] private float playerSpeed = 5.0f;
+		[BoxGroup("Configuration"), Tooltip("How high should the player be able to jump?"), SerializeField] private float playerJumpHeight = 5.0f;
+		[BoxGroup("Configuration"), Tooltip("How many times should the player be able to jump before landing on the ground?"), SerializeField] private int currentConsecutiveJumps = 4;
+		[BoxGroup("Configuration"), Tooltip("How many times should the player be able to jump before landing on the ground?"), SerializeField] private int maxConsecutiveJumps = 4;
 
 		[BoxGroup("Configuration"), SerializeField] private LayerMask groundLayer;
-		[BoxGroup("Configuration"), SerializeField] private bool isGrounded;
-		[BoxGroup("Configuration"), SerializeField] private bool allowedToMove;
-		[BoxGroup("Configuration"), SerializeField] private bool allowedToMoveForward;
+		[BoxGroup("Configuration"), Tooltip("Is the player on the ground?"), SerializeField] private bool isGrounded = true;
+		[BoxGroup("Configuration"), Tooltip("Should the script accept player input?"), SerializeField] private bool isAllowedToMove = true;
+		[BoxGroup("Configuration"), Tooltip("Using a raycast, is the area in front of the player a place where the player can move to?"), SerializeField] private bool isAllowedToMoveForward = true;
 
 		[BoxGroup("Information"), SerializeField] private Vector2 desiredPosition;
 		[BoxGroup("Information"), SerializeField] private Vector2 velocity;
@@ -51,87 +41,120 @@ namespace h1ddengames {
 		[BoxGroup("Events"), SerializeField] private UnityEvent hasMovedRightEvent;
 		[BoxGroup("Events"), SerializeField] private UnityEvent hasStoppedMovingRightEvent;
 		[BoxGroup("Events"), SerializeField] private UnityEvent hasJumpedEvent;
-		[BoxGroup("Events"), SerializeField] private UnityEvent haslandedEvent;
-
+		[BoxGroup("Events"), SerializeField] private UnityEvent hasLandedEvent;
 		#endregion
 
 		#region Private Fields
 		#endregion
 
 		#region Getters/Setters
+		public Rigidbody2D PlayerRigidBody2D { get => playerRigidBody2D; set => playerRigidBody2D = value; }
+		public BoxCollider2D PlayerBoxCollider2D { get => playerBoxCollider2D; set => playerBoxCollider2D = value; }
+		public Animator PlayerAnimator { get => playerAnimator; set => playerAnimator = value; }
+		public SpriteRenderer PlayerSpriteRenderer { get => playerSpriteRenderer; set => playerSpriteRenderer = value; }
+		public PolygonCollider2D LevelBoundingBox { get => levelBoundingBox; set => levelBoundingBox = value; }
+		public float PlayerSpeed { get => playerSpeed; set => playerSpeed = value; }
+		public float PlayerJumpHeight { get => playerJumpHeight; set => playerJumpHeight = value; }
+		public LayerMask GroundLayer { get => groundLayer; set => groundLayer = value; }
 		public bool IsGrounded {
 			get => isGrounded;
 			set {
 				isGrounded = value;
-				if(value) {
-					haslandedEvent.Invoke();
+				if (value) {
+					HasLandedEvent.Invoke();
 				}
 			}
 		}
+
+		public bool IsAllowedToMove { get => isAllowedToMove; set => isAllowedToMove = value; }
+		public bool IsAllowedToMoveForward { get => isAllowedToMoveForward; set => isAllowedToMoveForward = value; }
+		public Vector2 DesiredPosition { get => desiredPosition; set => desiredPosition = value; }
+		public Vector2 Velocity { get => velocity; set => velocity = value; }
+		public bool BeingControlledByCode { get => beingControlledByCode; set => beingControlledByCode = value; }
+		public List<WayPoint> ListOfWayPoints { get => listOfWayPoints; set => listOfWayPoints = value; }
+		public UnityEvent HasMovedLeftEvent { get => hasMovedLeftEvent; set => hasMovedLeftEvent = value; }
+		public UnityEvent HasStoppedMovingLeftEvent { get => hasStoppedMovingLeftEvent; set => hasStoppedMovingLeftEvent = value; }
+		public UnityEvent HasMovedRightEvent { get => hasMovedRightEvent; set => hasMovedRightEvent = value; }
+		public UnityEvent HasStoppedMovingRightEvent { get => hasStoppedMovingRightEvent; set => hasStoppedMovingRightEvent = value; }
+		public UnityEvent HasJumpedEvent { get => hasJumpedEvent; set => hasJumpedEvent = value; }
+		public UnityEvent HasLandedEvent { get => hasLandedEvent; set => hasLandedEvent = value; }
 		#endregion
 
-		#region My Methods
-
+		#region Animaton/Visual Methods
 		public void AnimateRun(float moveInput) {
-			playerAnimator.SetFloat("velocity", Mathf.Abs(moveInput));
+			PlayerAnimator.SetFloat("velocity", Mathf.Abs(moveInput));
 		}
 
 		public void AnimateJump() {
-			playerAnimator.SetBool("isJumping", true);
+			PlayerAnimator.SetBool("isJumping", true);
 		}
 
 		public void EndJump() {
-			playerAnimator.SetBool("isJumping", false);
-		}
-
-		// Sets up the UnityEvent listeners automatically with the added benefit of keeping the
-		// UnityEvents in the inspector clean for any user of this script.
-		public void SetupEvents() {
-			hasMovedLeftEvent.AddListener(delegate { FlipCharacter(true); });
-			hasMovedLeftEvent.AddListener(delegate { Move(-1f); });
-			
-			hasStoppedMovingLeftEvent.AddListener(delegate { Stop(); });
-
-			hasMovedRightEvent.AddListener(delegate { FlipCharacter(false); });
-			hasMovedRightEvent.AddListener(delegate { Move(1f); });
-			
-			hasStoppedMovingRightEvent.AddListener(delegate { Stop(); });
-
-			hasJumpedEvent.AddListener(new UnityAction(Jump));
+			PlayerAnimator.SetBool("isJumping", false);
 		}
 
 		// True faces the front of the character to the left, false faces the front of the character to the right.
 		public void FlipCharacter(bool input) {
 			if (input) {
-				playerSpriteRenderer.flipX = true;
+				PlayerSpriteRenderer.flipX = true;
 			} else {
-				playerSpriteRenderer.flipX = false;
+				PlayerSpriteRenderer.flipX = false;
 			}
 		}
+		#endregion
 
+		#region Setup Methods
+		[ContextMenu("Find References")]
+		public void FindReferences() {
+			PlayerRigidBody2D = GetComponent<Rigidbody2D>();
+			PlayerBoxCollider2D = GetComponent<BoxCollider2D>();
+			PlayerAnimator = GetComponent<Animator>();
+			PlayerSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		}
+
+		// Sets up the UnityEvent listeners automatically with the added benefit of keeping the
+		// UnityEvents in the inspector clean for any user of this script.
+		[ContextMenu("Setup Events")]
+		public void SetupEvents() {
+			HasMovedLeftEvent.AddListener(delegate { FlipCharacter(true); });
+			HasMovedLeftEvent.AddListener(delegate { Move(-1f); });
+
+			HasStoppedMovingLeftEvent.AddListener(delegate { Stop(); });
+
+			HasMovedRightEvent.AddListener(delegate { FlipCharacter(false); });
+			HasMovedRightEvent.AddListener(delegate { Move(1f); });
+
+			HasStoppedMovingRightEvent.AddListener(delegate { Stop(); });
+
+			HasJumpedEvent.AddListener(new UnityAction(Jump));
+			HasJumpedEvent.AddListener(delegate { currentConsecutiveJumps -= 1; });
+
+			HasLandedEvent.AddListener(delegate { currentConsecutiveJumps = maxConsecutiveJumps; });
+		}
+		#endregion
+
+		#region Movement Methods
 		public void Move(float direction) {
-			//desiredPosition = new Vector2(transform.position.x + direction, transform.position.y);
-			//MoveToLocation(desiredPosition);
-
-			playerRigidBody2D.velocity = new Vector2(direction * playerSpeed, playerRigidBody2D.velocity.y);
+			PlayerRigidBody2D.velocity = new Vector2(direction * PlayerSpeed, PlayerRigidBody2D.velocity.y);
 		}
 
 		public void Stop() {
-			playerRigidBody2D.velocity = new Vector2(0, 0);
+			PlayerRigidBody2D.velocity = new Vector2(0, 0);
 		}
 
 		public void Jump() {
-			isGrounded = false;
-			if (playerRigidBody2D.velocity.x != 0) {
-				playerRigidBody2D.velocity = new Vector2(playerRigidBody2D.velocity.x, playerJumpHeight);
+			IsGrounded = false;
+			if (PlayerRigidBody2D.velocity.x != 0) {
+				PlayerRigidBody2D.velocity = new Vector2(PlayerRigidBody2D.velocity.x, PlayerJumpHeight);
 			} else {
-				playerRigidBody2D.velocity = new Vector2(0, playerJumpHeight);
+				PlayerRigidBody2D.velocity = new Vector2(0, PlayerJumpHeight);
 			}
 
 			AnimateJump();
-
 		}
+		#endregion
 
+		#region Automation Methods
 		public void MoveToLocation(Transform desiredTransform) {
 			MoveToLocation(desiredTransform.position);
 		}
@@ -141,99 +164,113 @@ namespace h1ddengames {
 		}
 
 		public void MoveToLocation(Vector2 desiredPosition) {
-			transform.position = Vector2.MoveTowards(transform.position, desiredPosition, playerSpeed * Time.deltaTime);
+			transform.position = Vector2.MoveTowards(transform.position, desiredPosition, PlayerSpeed * Time.deltaTime);
 		}
+		#endregion
 
+		#region Obstacle Checker
 		public void CheckForObstacle() {
-			Vector2 position = transform.position;
-			Vector2 direction = Vector2.right;
-			float distance = 1f;
-
-			if(playerSpriteRenderer.flipX) {
-				direction = Vector2.left;
-			}
-
-			Debug.DrawRay(position, direction, Color.red);
-			Debug.DrawRay(new Vector2(position.x, position.y + 0.25f), direction, Color.blue);
-			Debug.DrawRay(new Vector2(position.x, position.y - 0.25f), direction, Color.blue);
-			Debug.DrawRay(new Vector2(position.x, position.y - 0.5f), direction, Color.blue);
-
-			RaycastHit2D hitUpper = Physics2D.Raycast(new Vector2(position.x, position.y + 0.25f), direction, distance, groundLayer);
-			RaycastHit2D hitMiddle = Physics2D.Raycast(position, direction, distance, groundLayer);
-			RaycastHit2D hitLower = Physics2D.Raycast(new Vector2(position.x, position.y - 0.25f), direction, distance, groundLayer);
-			RaycastHit2D hitLowest = Physics2D.Raycast(new Vector2(position.x, position.y - 0.5f), direction, distance, groundLayer);
-
-			if (hitUpper.collider != null || hitMiddle.collider != null || hitLower.collider != null || hitLowest.collider != null) {
-				allowedToMoveForward = false;
+			Collider2D[] hits;
+			if (PlayerSpriteRenderer.flipX) {
+				// When facing left, the overlapbox should be moved further to the left to put the box in front of the player.
+				hits = Physics2D.OverlapBoxAll(transform.position - new Vector3(1, 0, 0), PlayerBoxCollider2D.size, 0);
 			} else {
-				allowedToMoveForward = true;
+				hits = Physics2D.OverlapBoxAll(transform.position + new Vector3(1, 0, 0), PlayerBoxCollider2D.size, 0);
 			}
+
+			foreach (var collider in hits) {
+				if (collider.isTrigger)
+					continue;
+
+				if (collider == LevelBoundingBox)
+					continue;
+
+				if (collider == PlayerBoxCollider2D)
+					continue;
+
+				if (collider.gameObject.tag == "Player")
+					continue;
+
+				IsAllowedToMoveForward = false;
+			}
+
+			IsAllowedToMoveForward = true;
 		}
 
 		public void CheckForGround() {
-			Vector2 position = transform.position;
-			Vector2 direction = Vector2.down;
-			float distance = 0.75f;
+			Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position + new Vector3(0, -0.5f, 0), PlayerBoxCollider2D.size, 0);
 
-			Debug.DrawRay(position, direction, Color.green);
-			RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
-			if (hit.collider != null) {
-				isGrounded = true;
-			} else {
-				isGrounded = false;
+			foreach (var collider in hits) {
+				if (collider.isTrigger)
+					continue;
+
+				if (LevelBoundingBox != null) {
+					if (collider == LevelBoundingBox)
+						continue;
+				}
+
+				if (collider == PlayerBoxCollider2D)
+					continue;
+
+				if (collider.gameObject.tag == "Player")
+					continue;
+
+				IsGrounded = true;
 			}
 		}
 		#endregion
 
 		#region Unity Methods
 		void OnEnable() {
-			
+
 		}
-		
+
 		void Start() {
+			FindReferences();
 			SetupEvents();
 		}
 
 		void Update() {
-			velocity = playerRigidBody2D.velocity;
-			if(velocity.y < 0) {
-				velocity = new Vector2(velocity.x, velocity.y * 2);
+			Velocity = PlayerRigidBody2D.velocity;
+			if (Velocity.y < 0) {
+				Velocity = new Vector2(Velocity.x, Velocity.y * 2);
 			}
 
-			if(beingControlledByCode) {
-				if (listOfWayPoints.Count != 0) {
-					if (!listOfWayPoints[0].HasArrived) {
-						MoveToLocation(listOfWayPoints[0].Location);
+			// For automating the movement of the player.
+			if (BeingControlledByCode) {
+				if (ListOfWayPoints.Count != 0) {
+					if (!ListOfWayPoints[0].HasArrived) {
+						MoveToLocation(ListOfWayPoints[0].Location);
 					}
 
 					// Check to see if the player is close enough to the linked teleporter.
-					if (Vector2.Distance(transform.position, listOfWayPoints[0].Location) < 0.2f) {
-						listOfWayPoints[0].HasArrived = true;
-						listOfWayPoints.RemoveAt(0);
+					if (Vector2.Distance(transform.position, ListOfWayPoints[0].Location) < 0.2f) {
+						ListOfWayPoints[0].HasArrived = true;
+						ListOfWayPoints.RemoveAt(0);
 					}
 				}
 			}
 
 			CheckForGround();
 
-			if (IsGrounded) {
-				if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) {
-					hasJumpedEvent.Invoke();
-				}
-
+			if (IsGrounded && IsAllowedToMove) {
 				if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
 					Jump();
-					hasJumpedEvent.Invoke();
+					HasJumpedEvent.Invoke();
+				}
+			} else if (IsAllowedToMove && currentConsecutiveJumps > 0) {
+				if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) {
+					HasJumpedEvent.Invoke();
 				}
 			}
 
 			CheckForObstacle();
 
-			if(allowedToMoveForward) {
+			if (IsAllowedToMoveForward && IsAllowedToMove) {
 				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-					hasMovedLeftEvent.Invoke();
+					HasMovedLeftEvent.Invoke();
 				} else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-					hasMovedRightEvent.Invoke();
+					HasMovedRightEvent.Invoke();
 				}
 			} else {
 				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
@@ -242,23 +279,38 @@ namespace h1ddengames {
 					FlipCharacter(false);
 				}
 			}
-			
 
-			AnimateRun(playerRigidBody2D.velocity.x);
+			AnimateRun(PlayerRigidBody2D.velocity.x);
 
-			if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow)) {
-				hasStoppedMovingLeftEvent.Invoke();
-			} else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow)) {
-				hasStoppedMovingRightEvent.Invoke();
+			if (IsAllowedToMove) {
+				if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow)) {
+					HasStoppedMovingLeftEvent.Invoke();
+				} else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow)) {
+					HasStoppedMovingRightEvent.Invoke();
+				}
 			}
 		}
-		
+
 		void OnDisable() {
-			
+
 		}
 		#endregion
 
 		#region Helper Methods
 		#endregion
+	}
+
+	[Serializable]
+	public class WayPoint {
+		[SerializeField] private Vector2 location;
+		[SerializeField] private bool hasArrived;
+
+		public WayPoint(Vector2 location, bool hasArrived) {
+			this.location = location;
+			this.hasArrived = hasArrived;
+		}
+
+		public Vector2 Location { get => location; set => location = value; }
+		public bool HasArrived { get => hasArrived; set => hasArrived = value; }
 	}
 }

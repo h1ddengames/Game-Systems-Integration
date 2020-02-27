@@ -12,25 +12,47 @@ using RotaryHeart.Lib.SerializableDictionary;
 namespace h1ddengames {
 	public class Teleporter : MonoBehaviour {
 		#region Exposed Fields
-		[BoxGroup("Configuration"), Tooltip("Which teleporter should this teleporter teleport to?"), SerializeField] private Teleporter linkedTeleporter;
-		[BoxGroup("Configuration"), Tooltip("How fast should the player be teleported?"), SerializeField] private float speed = 10.0f;
-		[BoxGroup("Configuration"), SerializeField] private bool isUsingTeleporter;
+		[BoxGroup("Configuration"), Tooltip("Which teleporter should this teleporter teleport to?"), SerializeField] 
+		private Teleporter linkedTeleporter;
 
-		[BoxGroup("Inputs"), Tooltip("What key should be pressed in order to activate the teleporter?"), SerializeField] private KeyCode activateTeleporterKey = KeyCode.W;
+		[BoxGroup("Configuration"), Tooltip("How fast should the player be teleported?"), SerializeField] 
+		private float speed = 10.0f;
 
-		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider enters the teleporter's collider", InfoBoxType.Normal), SerializeField] private UnityEvent enteredTeleporterColliderEvent;
-		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider exits the teleporter's collider", InfoBoxType.Normal), SerializeField] private UnityEvent exitedTeleporterColliderEvent;
-		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider enters the teleporter's collider AND the player presses the action or teleport button.", InfoBoxType.Warning), InfoBox("This event will run on every frame that isGrounded is false", InfoBoxType.Normal), SerializeField] private UnityEvent pressedActivateKeyEvent;
+		[BoxGroup("Configuration"), SerializeField] 
+		private bool isUsingTeleporter;
+
+		[BoxGroup("Configuration"), SerializeField] 
+		private bool isMoving = false;
+
+		[BoxGroup("Configuration"), SerializeField]
+		private bool isInCollider = false;
+
+		[BoxGroup("Inputs"), Tooltip("What key should be pressed in order to activate the teleporter?"), SerializeField] 
+		private KeyCode activateTeleporterKey = KeyCode.W;
+
+		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider enters the teleporter's collider", InfoBoxType.Normal), SerializeField] 
+		private UnityEvent enteredTeleporterColliderEvent;
+
+		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider exits the teleporter's collider", InfoBoxType.Normal), SerializeField] 
+		private UnityEvent exitedTeleporterColliderEvent;
+
+		[BoxGroup("Events"), InfoBox("This event will run on the frame that the player's collider enters the teleporter's collider AND the player presses the action or teleport button.", InfoBoxType.Warning), InfoBox("This event will run on every frame that isGrounded is false", InfoBoxType.Normal), SerializeField] 
+		private UnityEvent pressedActivateKeyEvent;
 		#endregion
 
 		#region Private Fields
-		private bool isInCollider = false;
-		[SerializeField] private bool isMoving = false;
-
-		public bool IsMoving { get => isMoving; set => isMoving = value; } 
 		#endregion
 
 		#region Getters/Setters/Constructors
+		public Teleporter LinkedTeleporter { get => linkedTeleporter; set => linkedTeleporter = value; }
+		public float Speed { get => speed; set => speed = value; }
+		public bool IsUsingTeleporter { get => isUsingTeleporter; set => isUsingTeleporter = value; }
+		public bool IsMoving { get => isMoving; set => isMoving = value; }
+		public bool IsInCollider { get => isInCollider; set => isInCollider = value; }
+		public KeyCode ActivateTeleporterKey { get => activateTeleporterKey; set => activateTeleporterKey = value; }
+		public UnityEvent EnteredTeleporterColliderEvent { get => enteredTeleporterColliderEvent; set => enteredTeleporterColliderEvent = value; }
+		public UnityEvent ExitedTeleporterColliderEvent { get => exitedTeleporterColliderEvent; set => exitedTeleporterColliderEvent = value; }
+		public UnityEvent PressedActivateKeyEvent { get => pressedActivateKeyEvent; set => pressedActivateKeyEvent = value; }
 		#endregion
 
 		#region Test Methods
@@ -53,7 +75,7 @@ namespace h1ddengames {
 			GameManager.Instance.PlayerCharacterController2D.IsGravityOn = false;
 			GameManager.Instance.PlayerboxCollider2D.enabled = false;
 			IsMoving = true;
-			isUsingTeleporter = true;
+			IsUsingTeleporter = true;
 		}
 		#endregion
 
@@ -73,13 +95,13 @@ namespace h1ddengames {
 			//	GameManager.Instance.PlayerRigidBody2D.bodyType = RigidbodyType2D.Dynamic;
 			//}
 
-			if (isInCollider && Input.GetKeyDown(activateTeleporterKey)) {
-				pressedActivateKeyEvent.Invoke();
+			if (IsInCollider && Input.GetKeyDown(ActivateTeleporterKey)) {
+				PressedActivateKeyEvent.Invoke();
 			}
 
 			if(IsMoving) {
 				// Check to see if the player is close enough to the linked teleporter.
-				if(Vector2.Distance(GameManager.Instance.Player.transform.position, linkedTeleporter.transform.position) < 0.2f) {
+				if(Vector2.Distance(GameManager.Instance.Player.transform.position, LinkedTeleporter.transform.position) < 0.2f) {
 
 					IsMoving = false;
 					GameManager.Instance.PlayerCharacterController2D.IsGravityOn = true;
@@ -87,9 +109,9 @@ namespace h1ddengames {
 				}
 
 				// Move the player to the linked teleporter at a constant speed.
-				GameManager.Instance.Player.transform.position = Vector2.MoveTowards(GameManager.Instance.Player.transform.position, linkedTeleporter.transform.position, speed * Time.deltaTime);
+				GameManager.Instance.Player.transform.position = Vector2.MoveTowards(GameManager.Instance.Player.transform.position, LinkedTeleporter.transform.position, Speed * Time.deltaTime);
 			} else {
-				isUsingTeleporter = false;
+				IsUsingTeleporter = false;
 			}
 		}
 
@@ -100,15 +122,15 @@ namespace h1ddengames {
 		private void OnTriggerEnter2D(Collider2D collision) {
 			if(collision.tag == "Player") {
 				GameManager.Instance.PlayerSpriteRenderer.enabled = true;
-				isInCollider = true;
-				enteredTeleporterColliderEvent.Invoke();
+				IsInCollider = true;
+				EnteredTeleporterColliderEvent.Invoke();
 			}
 		}
 
 		private void OnTriggerExit2D(Collider2D collision) {
 			if (collision.tag == "Player") {
-				isInCollider = false;
-				exitedTeleporterColliderEvent.Invoke();
+				IsInCollider = false;
+				ExitedTeleporterColliderEvent.Invoke();
 			}
 		}
 		#endregion

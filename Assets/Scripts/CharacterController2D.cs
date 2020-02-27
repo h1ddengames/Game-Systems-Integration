@@ -18,34 +18,65 @@ namespace h1ddengames {
         #region Exposed Variables
         [BoxGroup("Main Setting"), Tooltip("Max speed, in units per second, that the character moves."), SerializeField]
         private float movementSpeed = 3.5f;
+
         [BoxGroup("Main Setting"), Tooltip("Acceleration while grounded."), SerializeField]
         private float walkAcceleration = 25;
+
         [BoxGroup("Main Setting"), Tooltip("Acceleration while in the air."), SerializeField]
         private float airAcceleration = 25;
+
         [BoxGroup("Main Setting"), Tooltip("Deceleration applied when character is grounded and not attempting to move."), SerializeField]
         private float groundDeceleration = 50;
+
         [BoxGroup("Main Setting"), Tooltip("Max height the character will jump regardless of gravity."), SerializeField]
         private float jumpHeight = 1.25f;
+
         [BoxGroup("Main Setting"), Tooltip("The amount of time the player needs to wait until they can jump again."), SerializeField]
         private float jumpDelay = 0.25f;
+
         [BoxGroup("Main Setting"), Tooltip("The number of times the player can jump before having to touch the ground."), SerializeField] private int maxNumberOfJumps = 2;
 
-        [BoxGroup("Quick Information"), Tooltip("Only rejects player input. All physics based movement will continue to work as intended."), SerializeField] private bool isAllowedToMove = true;
-        [BoxGroup("Quick Information"), Tooltip("Player receives constant gravity as long as isGrounded is false."), SerializeField] private bool isGravityOn = true;
-        [BoxGroup("Quick Information"), Tooltip("Is set to true when the character intersects a collider beneath them in the previous frame."), SerializeField] private bool isGrounded;
-        [BoxGroup("Quick Information"), Tooltip("A count of how many times the player can jump without having to touch the ground."), SerializeField] private int currentNumberOfJumps;
-        [BoxGroup("Quick Information"), Tooltip("The last time in milliseconds that the player has jumped."), SerializeField] private float m_lastJumped;
-        [BoxGroup("Quick Information"), SerializeField] private Vector2 velocity;
-        [BoxGroup("Quick Information"), SerializeField] private Vector2 defaultBoxColliderSize;
+        [BoxGroup("Quick Information"), Tooltip("Only rejects player input. All physics based movement will continue to work as intended."), SerializeField] 
+        private bool isAllowedToMove = true;
 
-        [BoxGroup("Configuration"), Tooltip("This collider is required to contain cinemachine camera to a certain area."), SerializeField] private PolygonCollider2D levelBoundingBox;
-        [BoxGroup("Configuration"), SerializeField] private Animator characterAnimator;
-        [BoxGroup("Configuration"), SerializeField] private BoxCollider2D characterBoxCollider2D;
-        [BoxGroup("Configuration"), Tooltip("This component must be located on the first child of this gameObject."), SerializeField] private SpriteRenderer characterSpriteRenderer;
+        [BoxGroup("Quick Information"), Tooltip("Player receives constant gravity as long as isGrounded is false."), SerializeField] 
+        private bool isGravityOn = true;
 
-        [BoxGroup("Events"), InfoBox("This event will run on every frame that isGrounded is true", InfoBoxType.Normal), SerializeField] private UnityEvent isOnGroundEvent;
-        [BoxGroup("Events"), InfoBox("Can accidentally be called if there's an overlap between two colliders", InfoBoxType.Warning), InfoBox("This event will run on every frame that isGrounded is false", InfoBoxType.Normal), SerializeField] private UnityEvent isNotOnGroundEvent;
-        [BoxGroup("Events"), InfoBox("This event will run on every frame that moveInput is not 0", InfoBoxType.Normal), SerializeField] private UnityEvent isMovingEvent;
+        [BoxGroup("Quick Information"), Tooltip("Is set to true when the character intersects a collider beneath them in the previous frame."), SerializeField] 
+        private bool isGrounded;
+
+        [BoxGroup("Quick Information"), Tooltip("A count of how many times the player can jump without having to touch the ground."), SerializeField] 
+        private int currentNumberOfJumps;
+
+        [BoxGroup("Quick Information"), Tooltip("The last time in milliseconds that the player has jumped."), SerializeField] 
+        private float lastJumped;
+
+        [BoxGroup("Quick Information"), SerializeField] 
+        private Vector2 velocity;
+
+        [BoxGroup("Quick Information"), SerializeField] 
+        private Vector2 defaultBoxColliderSize;
+
+        [BoxGroup("Configuration"), Tooltip("This collider is required to contain cinemachine camera to a certain area."), SerializeField] 
+        private PolygonCollider2D levelBoundingBox;
+
+        [BoxGroup("Configuration"), SerializeField] 
+        private Animator characterAnimator;
+
+        [BoxGroup("Configuration"), SerializeField] 
+        private BoxCollider2D characterBoxCollider2D;
+
+        [BoxGroup("Configuration"), Tooltip("This component must be located on the first child of this gameObject."), SerializeField] 
+        private SpriteRenderer characterSpriteRenderer;
+
+        [BoxGroup("Events"), InfoBox("This event will run on every frame that isGrounded is true", InfoBoxType.Normal), SerializeField] 
+        private UnityEvent isOnGroundEvent;
+
+        [BoxGroup("Events"), InfoBox("Can accidentally be called if there's an overlap between two colliders", InfoBoxType.Warning), InfoBox("This event will run on every frame that isGrounded is false", InfoBoxType.Normal), SerializeField] 
+        private UnityEvent isNotOnGroundEvent;
+
+        [BoxGroup("Events"), InfoBox("This event will run on every frame that moveInput is not 0", InfoBoxType.Normal), SerializeField] 
+        private UnityEvent isMovingEvent;
         #endregion
 
         #region Private Variables
@@ -63,7 +94,8 @@ namespace h1ddengames {
         public bool IsGravityOn { get => isGravityOn; set => isGravityOn = value; }
         public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
         public int CurrentNumberOfJumps { get => currentNumberOfJumps; set => currentNumberOfJumps = value; }
-        public float LastJumped { get => m_lastJumped; set => m_lastJumped = value; }
+        public float LastJumped { get => lastJumped; set => lastJumped = value; }
+        public Vector2 Velocity { get => velocity; set => velocity = value; }
         public Vector2 DefaultBoxColliderSize { get => defaultBoxColliderSize; set => defaultBoxColliderSize = value; }
         public PolygonCollider2D LevelBoundingBox { get => levelBoundingBox; set => levelBoundingBox = value; }
         public Animator CharacterAnimator { get => characterAnimator; set => characterAnimator = value; }
@@ -72,15 +104,18 @@ namespace h1ddengames {
         public UnityEvent IsOnGroundEvent { get => isOnGroundEvent; set => isOnGroundEvent = value; }
         public UnityEvent IsNotOnGroundEvent { get => isNotOnGroundEvent; set => isNotOnGroundEvent = value; }
         public UnityEvent IsMovingEvent { get => isMovingEvent; set => isMovingEvent = value; }
+        
         #endregion
 
         #region Animation Methods
         public void AnimateRun(float moveInput) {
             CharacterAnimator.SetFloat("velocity", Mathf.Abs(moveInput));
+            EndAttack();
         }
 
         public void AnimateJump() {
             CharacterAnimator.SetBool("isJumping", true);
+            EndAttack();
         }
 
         // Used by the animation tab as an event.
@@ -88,6 +123,16 @@ namespace h1ddengames {
         // and click on "Add Animation Event". Then select this method in the dropdown.
         public void EndJump() {
             CharacterAnimator.SetBool("isJumping", false);
+        }
+
+        public void AnimateAttack() {
+            CharacterAnimator.SetBool("isAttacking", true);
+        }
+
+        // Can Transition To Self needs to be turned off in the inspector.
+        // Select the transition arrow, expand settings, uncheck Can Transition To Self.
+        public void EndAttack() {
+            CharacterAnimator.SetBool("isAttacking", false);
         }
         #endregion
 
@@ -242,6 +287,11 @@ namespace h1ddengames {
             FindConfigurationElements();
         }
 
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.F)) {
+                AnimateAttack();
+            }
+        }
         private void LateUpdate() {
             Jump();
         }
