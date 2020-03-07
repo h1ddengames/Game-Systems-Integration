@@ -2,54 +2,70 @@
 // https://github.com/UnityCommunity/UnityLibrary/blob/master/Assets/Scripts/Texture/GradientTextureMaker.cs
 // Updated/Current Version by h1ddengames
 
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
+using SFB;
+using NaughtyAttributes;
+using RotaryHeart.Lib.SerializableDictionary;
 
 namespace h1ddengames {
-    [RequireComponent(typeof(RawImage))]
     public class GradientTextureMaker : MonoBehaviour {
         #region Exposed Fields
-        [SerializeField] private int width = 256;
-        [SerializeField] private int height = 1;
-        [NaughtyAttributes.ReorderableList, SerializeField] private Color[] colors;
-        [SerializeField] private TextureWrapMode textureWrapMode;
-        [SerializeField] private FilterMode filterMode;
-        [SerializeField] private bool isLinear;
+        [BoxGroup("References"), SerializeField] private SpriteRenderer sprite;
+        [BoxGroup("References"), SerializeField] private RawImage rawImage;
+
+        [BoxGroup("Configuration"), SerializeField] private string fileName;
+        [BoxGroup("Configuration"), SerializeField] private int width = 256;
+        [BoxGroup("Configuration"), SerializeField] private int height = 1;
+        [BoxGroup("Configuration"), SerializeField] private TextureWrapMode textureWrapMode;
+        [BoxGroup("Configuration"), SerializeField] private FilterMode filterMode;
+        [BoxGroup("Configuration"), SerializeField] private bool isLinear;
+
+        [BoxGroup("Configuration"), NaughtyAttributes.ReorderableList, SerializeField] private Color[] colors;
         #endregion
 
         #region Private Fields
-        private RawImage rawImage;
         private Texture2D texture;
         #endregion
 
         #region Getters/Setters/Constructors
+        public SpriteRenderer Sprite { get => sprite; set => sprite = value; }
+        public RawImage RawImage { get => rawImage; set => rawImage = value; }
         public int Width { get => width; set => width = value; }
         public int Height { get => height; set => height = value; }
         public Color[] Colors { get => colors; set => colors = value; }
         public TextureWrapMode TextureWrapMode { get => textureWrapMode; set => textureWrapMode = value; }
         public FilterMode FilterMode { get => filterMode; set => filterMode = value; }
         public bool IsLinear { get => isLinear; set => isLinear = value; }
+        public Texture2D Texture { get => texture; set => texture = value; }
         #endregion
+
+        [ExecuteAlways]
+        private void UpdateDisplay() {
+            Texture = Create(Colors, TextureWrapMode, FilterMode, IsLinear, false);
+
+            if (RawImage != null) {
+                RawImage.texture = Texture;
+            } else if (Sprite != null) {
+                Sprite.sprite = ConvertToSprite(Texture);
+            }
+        }
 
         #region Unity Methods
         private void Start() {
-            if (rawImage == null) {
-                rawImage = GetComponent<RawImage>();
-            }
+            Texture = Create(Colors, TextureWrapMode, FilterMode, IsLinear, false);
 
-            texture = Create(Colors, TextureWrapMode, FilterMode, IsLinear, false);
-            rawImage.texture = texture;
-        }
-
-        private void OnValidate() {
-            if (rawImage == null) {
-                rawImage = GetComponent<RawImage>();
-            }
-
-            texture = Create(Colors, TextureWrapMode, FilterMode, IsLinear, false);
-            rawImage.texture = texture;
+            if (RawImage != null) {
+                RawImage.texture = Texture;
+            } else if(Sprite != null) {
+                Sprite.sprite = ConvertToSprite(Texture);
+            } 
         }
         #endregion
 
@@ -65,7 +81,7 @@ namespace h1ddengames {
                 length = 8;
             }
 
-            // build gradient from colors
+            // Build gradient from colors.
             var colorKeys = new GradientColorKey[length];
             var alphaKeys = new GradientAlphaKey[length];
 
@@ -78,22 +94,35 @@ namespace h1ddengames {
                 alphaKeys[i].time = step;
             }
 
-            // create gradient
+            // Create gradient.
             Gradient gradient = new Gradient();
             gradient.SetKeys(colorKeys, alphaKeys);
 
-            // create texture
+            // Create texture.
             Texture2D outputTex = new Texture2D(Width, Height, TextureFormat.ARGB32, false, isLinear);
             outputTex.wrapMode = textureWrapMode;
             outputTex.filterMode = filterMode;
 
-            // draw texture
+            // Draw texture.
             for (int i = 0; i < Width; i++) {
                 outputTex.SetPixel(i, 0, gradient.Evaluate((float) i / (float) Width));
             }
             outputTex.Apply(false);
 
             return outputTex;
+        }
+
+        public Sprite ConvertToSprite(Texture2D texture) {
+            return UnityEngine.Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+        }
+
+        [NaughtyAttributes.Button("Save Image as PNG")]
+        public void SaveImage() {
+            if (!string.IsNullOrWhiteSpace(fileName)) {
+                File.WriteAllBytes(Application.dataPath + "/Generated PNGS/" + fileName + ".png", Create(Colors, TextureWrapMode, FilterMode, IsLinear, false).EncodeToPNG());
+            } else {
+                Debug.LogError("Requires filename to not be null or empty.");
+            }
         }
     }
 }
