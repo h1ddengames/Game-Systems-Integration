@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RotaryHeart.Lib
 {
-    [CreateAssetMenu(fileName = "NestedDB.asset", menuName = "Nested DB")]
+    //[CreateAssetMenu(fileName = "NestedDB.asset", menuName = "Nested DB")]
     public class NestedDB : ScriptableObject
     {
         [SerializeField, ID("id")]
