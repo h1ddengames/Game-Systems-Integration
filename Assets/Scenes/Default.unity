@@ -4341,7 +4341,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfAutomatedTasks: []
-  debugAutomatedTask: {fileID: 0}
+  debugAutomatedTask: {fileID: 1355638790}
+  debugDelayBeforeStartingAutomation: 4
+  debugDelayAfterFinishingAutomation: 5
+  debugTaskToDoBeforeName: Before Task Delegate
+  debugTaskToDoName: Random task name
+  debugTaskToDoAfterName: Inline delegate where task name was not given
 --- !u!4 &532084767
 Transform:
   m_ObjectHideFlags: 0
@@ -6270,6 +6275,23 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 1885332821}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &1355638790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeStartingAutomation: 4
+  delayAfterFinishingAutomation: 5
+  taskToDoBeforeName: Before Task Delegate
+  taskToDoName: Random task name
+  taskToDoAfterName: Inline delegate where task name was not given
 --- !u!1 &1369972810
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,30 +59,14 @@ namespace h1ddengames {
             stringBuilder.Append("Delay before starting automation: ")
                         .Append(delayBeforeStartingAutomation);
 
-            if (taskToDoBeforeAutomating is Delegate) {
-                stringBuilder.Append(" seconds.\r\nTask to do before starting automation: ")
+            stringBuilder.Append(" seconds.\r\nTask to do before starting automation: ")
                             .Append(taskToDoBeforeName);
-            } else {
-                stringBuilder.Append(" seconds.\r\nTask to do before starting automation: ")
-                            .Append(taskToDoBeforeAutomating.Method.Name);
-            }
 
-            if (taskToAutomate is Delegate) {
-                stringBuilder.Append("\r\nTask to do: ")
+            stringBuilder.Append("\r\nTask to do: ")
                             .Append(taskToDoName);
 
-            } else {
-                stringBuilder.Append("\r\nTask to do: ")
-                            .Append(taskToAutomate.Method.Name);
-            }
-
-            if (taskToDoAfterAutomating is Delegate) {
-                stringBuilder.Append(".\r\nTask to do after finishing automation: ")
+            stringBuilder.Append(".\r\nTask to do after finishing automation: ")
                             .Append(taskToDoAfterName);
-            } else {
-                stringBuilder.Append(".\r\nTask to do after finishing automation: ")
-                            .Append(taskToDoAfterAutomating.Method.Name);
-            }
 
             stringBuilder.Append(".\r\nDelay after task is finished: ")
                             .Append(delayAfterFinishingAutomation)

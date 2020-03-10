@@ -11,9 +11,19 @@ using RotaryHeart.Lib.SerializableDictionary;
 namespace h1ddengames {
     public class AutomatedTaskRunner : MonoBehaviour {
         #region Exposed Fields
-        public List<AutomatedTask> listOfAutomatedTasks = new List<AutomatedTask>();
+        [NaughtyAttributes.ReorderableList] public List<AutomatedTask> listOfAutomatedTasks = new List<AutomatedTask>();
 
         public AutomatedTask debugAutomatedTask;
+
+        public float debugDelayBeforeStartingAutomation;
+        public Action debugTaskToDoBeforeAutomating;
+        public Action debugTaskToAutomate;
+        public Action debugTaskToDoAfterAutomating;
+        public float debugDelayAfterFinishingAutomation;
+
+        public string debugTaskToDoBeforeName;
+        public string debugTaskToDoName;
+        public string debugTaskToDoAfterName;
         #endregion
 
         #region Private Fields
@@ -34,23 +44,49 @@ namespace h1ddengames {
         public void DoAfterTask() {
             Debug.Log("Called from inside Do After Method.");
         }
-        #endregion
 
-        #region Unity Methods
-        void OnEnable() {
+        public void SetDebugVariables(AutomatedTask debugAutomatedTask) {
+            debugDelayBeforeStartingAutomation = debugAutomatedTask.delayBeforeStartingAutomation;
+            debugTaskToDoBeforeAutomating = debugAutomatedTask.taskToDoBeforeAutomating;
+            debugTaskToAutomate = debugAutomatedTask.taskToAutomate;
+            debugTaskToDoAfterAutomating = debugAutomatedTask.taskToDoAfterAutomating;
+            debugDelayAfterFinishingAutomation = debugAutomatedTask.delayAfterFinishingAutomation;
 
+            debugTaskToDoBeforeName = debugAutomatedTask.taskToDoBeforeName;
+            debugTaskToDoName = debugAutomatedTask.taskToDoName;
+            debugTaskToDoAfterName = debugAutomatedTask.taskToDoAfterName;
         }
 
-        void Start() {
+        [NaughtyAttributes.Button("Clear Debug Variables")]
+        public void ClearDebugVariables() {
+            debugDelayBeforeStartingAutomation = 0;
+            debugTaskToDoBeforeAutomating = null;
+            debugTaskToAutomate = null;
+            debugTaskToDoAfterAutomating = null;
+            debugDelayAfterFinishingAutomation = 0;
+
+            debugTaskToDoBeforeName = "";
+            debugTaskToDoName = "";
+            debugTaskToDoAfterName = "";
+        }
+
+        [NaughtyAttributes.Button("Test Method 1")]
+        void TestMethod1() {
             debugAutomatedTask =
                 AutomatedTaskBuilder.DefineTask()
                                     .WithDelayBefore(4f)
-                                    .DoBefore(DoBeforeTask)
+                                    .DoBefore(DoBeforeTask, "Task")
                                     .DoTask(DoTask)
                                     .DoPost(DoAfterTask)
                                     .WithDelayAfter(5f).Build();
 
+            SetDebugVariables(debugAutomatedTask);
+
             Debug.Log(debugAutomatedTask.ToString());
+        }        
+        
+        [NaughtyAttributes.Button("Test Method 2")]
+        void TestMethod2() {
 
             debugAutomatedTask =
                 AutomatedTaskBuilder.DefineTask()
@@ -59,7 +95,21 @@ namespace h1ddengames {
                                     .DoPost(delegate { Debug.Log("Delegate call after task"); })
                                     .WithDelayAfter(5f).Build();
 
+            SetDebugVariables(debugAutomatedTask);
+
             Debug.Log(debugAutomatedTask.ToString());
+        }
+        #endregion
+
+        #region Unity Methods
+        void OnEnable() {
+
+        }
+
+        void Start() {
+            
+
+
         }
 
         void Update() {

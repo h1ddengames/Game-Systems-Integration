@@ -7,6 +7,7 @@ using TMPro;
 using SFB;
 using NaughtyAttributes;
 using RotaryHeart.Lib.SerializableDictionary;
+using System.Text.RegularExpressions;
 
 namespace h1ddengames {
     [Serializable]
@@ -33,38 +34,52 @@ namespace h1ddengames {
         }
 
         public DefineTask DoBefore(Action task) {
-            automatedTaskDefinition.taskToDoBeforeAutomating = task;
-            automatedTaskDefinition.taskToDoBeforeName = task.Method.Name;
-            return this;
+            return DoBefore(task, task.Method.Name);
         }
 
         public DefineTask DoBefore(Action task, string taskName) {
             automatedTaskDefinition.taskToDoBeforeAutomating = task;
-            automatedTaskDefinition.taskToDoBeforeName = taskName + " (Inline delegate)";
+
+            if (!string.IsNullOrEmpty(taskName)) {
+                if (Regex.IsMatch(taskName, "<*>")) {
+                    automatedTaskDefinition.taskToDoBeforeName = "Inline delegate where task name was not given";
+                } else {
+                    automatedTaskDefinition.taskToDoBeforeName = taskName;
+                }
+            }
+
             return this;
         }
 
         public DefinePostTask DoTask(Action task) {
-            automatedTaskDefinition.taskToAutomate = task;
-            automatedTaskDefinition.taskToDoName = task.Method.Name;
-            return this;
+            return DoTask(task, task.Method.Name);
         }
 
         public DefinePostTask DoTask(Action task, string taskName) {
-            automatedTaskDefinition.taskToAutomate = task;
-            automatedTaskDefinition.taskToDoName = taskName;
+            if (!string.IsNullOrEmpty(taskName)) {
+                if (Regex.IsMatch(taskName, "<*>")) {
+                    automatedTaskDefinition.taskToDoName = "Inline delegate where task name was not given";
+                } else {
+                    automatedTaskDefinition.taskToDoName = taskName;
+                }
+            }
+
             return this;
         }
 
         public DefineDelayAfter DoPost(Action task) {
-            automatedTaskDefinition.taskToDoAfterAutomating = task;
-            automatedTaskDefinition.taskToDoAfterName = task.Method.Name;
-            return this;
+            return DoPost(task, task.Method.Name);
         }
 
         public DefineDelayAfter DoPost(Action task, string taskName) {
-            automatedTaskDefinition.taskToDoAfterAutomating = task;
-            automatedTaskDefinition.taskToDoAfterName = taskName;
+            if (!string.IsNullOrEmpty(taskName)) {
+                if (Regex.IsMatch(taskName, "<*>")) {
+                    automatedTaskDefinition.taskToDoAfterName = "Inline delegate where task name was not given";
+                } else {
+                    automatedTaskDefinition.taskToDoAfterName = taskName;
+                }
+            }
+
             return this;
         }
 
@@ -74,48 +89,8 @@ namespace h1ddengames {
         }
 
         public AutomatedTask Build() {
-            if (string.IsNullOrEmpty(automatedTaskDefinition.taskToDoBeforeName) || automatedTaskDefinition.taskToDoBeforeName.Contains("<Start>")) {
-                automatedTaskDefinition.taskToDoBeforeName = "Task name not given";
-            }
-
-            if (string.IsNullOrEmpty(automatedTaskDefinition.taskToDoName) || automatedTaskDefinition.taskToDoName.Contains("<Start>")) {
-                automatedTaskDefinition.taskToDoName = "Task name not given";
-            }
-
-            if (string.IsNullOrEmpty(automatedTaskDefinition.taskToDoAfterName) || automatedTaskDefinition.taskToDoAfterName.Contains("<Start>")) {
-                automatedTaskDefinition.taskToDoAfterName = "Task name not given";
-            }
             return automatedTaskDefinition;
         }
-
-        //public ITaskDelayBeforeAutomating DoTask(Action task) {
-        //    automatedTask.taskToAutomate = task;
-        //    return this;
-        //}
-
-        //public IDoTaskBeforeStart WithDelayBefore(float delayTime) {
-        //    automatedTask.delayBeforeStartingAutomation = delayTime;
-        //    return this;
-        //}
-
-        //public IDoTaskAfterFinish DoTaskBeforeStarting(Action task) {
-        //    automatedTask.taskToDoBeforeAutomating = task;
-        //    return this;
-        //}
-
-        //public ITaskDelayAfterAutomating DoTaskAfterFinishing(Action task) {
-        //    automatedTask.taskToDoAfterAutomating = task;
-        //    return this;
-        //}
-
-        //public ITaskDefinitionFinished WithDelayAfter(float delayTime) {
-        //    automatedTask.delayAfterFinishingAutomation = delayTime;
-        //    return this;
-        //}
-
-        //public AutomatedTask CreateTask() {
-        //    return automatedTask;
-        //}
         #endregion
 
         #region Helper Methods
@@ -148,28 +123,4 @@ namespace h1ddengames {
     public interface BuildTask {
         AutomatedTask Build();
     }
-
-    //public interface TaskDefinition {
-    //    ITaskDelayBeforeAutomating DoTask(Action task);
-    //}
-
-    //public interface ITaskDelayBeforeAutomating {
-    //    IDoTaskBeforeStart WithDelayBefore(float delayTime);
-    //}
-
-    //public interface IDoTaskBeforeStart {
-    //    IDoTaskAfterFinish DoTaskBeforeStarting(Action task);
-    //}
-
-    //public interface IDoTaskAfterFinish {
-    //    ITaskDelayAfterAutomating DoTaskAfterFinishing(Action task);
-    //}
-
-    //public interface ITaskDelayAfterAutomating {
-    //    ITaskDefinitionFinished WithDelayAfter(float delayTime);
-    //}
-
-    //public interface ITaskDefinitionFinished {
-    //    AutomatedTask CreateTask();
-    //}
 }
