@@ -4321,6 +4321,10 @@ GameObject:
   m_Component:
   - component: {fileID: 532084767}
   - component: {fileID: 532084766}
+  - component: {fileID: 532084769}
+  - component: {fileID: 532084768}
+  - component: {fileID: 532084771}
+  - component: {fileID: 532084770}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -4335,18 +4339,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532084765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 082c7a5beb5db2f4896ea3fe44fcfb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfAutomatedTasks: []
-  debugAutomatedTask: {fileID: 1355638790}
-  debugDelayBeforeStartingAutomation: 4
-  debugDelayAfterFinishingAutomation: 5
-  debugTaskToDoBeforeName: Before Task Delegate
-  debugTaskToDoName: Random task name
-  debugTaskToDoAfterName: Inline delegate where task name was not given
+  automatedTasks:
+  - {fileID: 532084769}
+  - {fileID: 532084768}
+  - {fileID: 532084771}
+  - {fileID: 532084770}
+  tasksShouldRun: 1
+  loopTasks: 0
+  amountOfTimesToReunTasks: 0
+  index: 0
 --- !u!4 &532084767
 Transform:
   m_ObjectHideFlags: 0
@@ -4361,6 +4367,141 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &532084768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532084765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 532084766}
+        m_MethodName: Task2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  delayBeforeTask: 2
+  delayAfterTask: 3
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
+--- !u!114 &532084769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532084765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 532084766}
+        m_MethodName: Task
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 532084766}
+        m_MethodName: Task1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeTask: 3
+  delayAfterTask: 1
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
+--- !u!114 &532084770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532084765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 532084766}
+        m_MethodName: TaskWithString
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: some randome string
+          m_BoolArgument: 0
+        m_CallState: 1
+  delayBeforeTask: 1
+  delayAfterTask: 2
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
+--- !u!114 &532084771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532084765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 532084766}
+        m_MethodName: TaskWithCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  delayBeforeTask: 1
+  delayAfterTask: 1
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
 --- !u!1 &536425450
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,6 +4626,87 @@ Transform:
   - {fileID: 1440939385}
   m_Father: {fileID: 438935704}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &569358740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569358743}
+  - component: {fileID: 569358742}
+  - component: {fileID: 569358741}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &569358741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569358740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 569358742}
+        m_MethodName: TaskWithCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  delayBeforeTask: 3
+  delayAfterTask: 2
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
+--- !u!114 &569358742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569358740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082c7a5beb5db2f4896ea3fe44fcfb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automatedTasks:
+  - {fileID: 569358741}
+  tasksShouldRun: 1
+  loopTasks: 1
+  amountOfTimesToReunTasks: 2
+  index: 0
+--- !u!4 &569358743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569358740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578995649
 GameObject:
@@ -6275,23 +6497,6 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 1885332821}
   m_ConfineScreenEdges: 1
   m_Damping: 0
---- !u!114 &1355638790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayBeforeStartingAutomation: 4
-  delayAfterFinishingAutomation: 5
-  taskToDoBeforeName: Before Task Delegate
-  taskToDoName: Random task name
-  taskToDoAfterName: Inline delegate where task name was not given
 --- !u!1 &1369972810
 GameObject:
   m_ObjectHideFlags: 0
@@ -8360,3 +8565,84 @@ Transform:
   m_Father: {fileID: 1922396979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1 &2083523886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2083523889}
+  - component: {fileID: 2083523888}
+  - component: {fileID: 2083523887}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2083523887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083523886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882cf14c756dc7941b49c100c0028bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  task:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 569358742}
+        m_MethodName: TaskWithString
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: some string
+          m_BoolArgument: 0
+        m_CallState: 1
+  delayBeforeTask: 2
+  delayAfterTask: 1
+  hasInvokedTask: 0
+  hasFinishedDelayAfterTask: 0
+--- !u!114 &2083523888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083523886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082c7a5beb5db2f4896ea3fe44fcfb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automatedTasks:
+  - {fileID: 2083523887}
+  tasksShouldRun: 1
+  loopTasks: 1
+  amountOfTimesToReunTasks: 2
+  index: 0
+--- !u!4 &2083523889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083523886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,78 +1,61 @@
 ﻿// Created by h1ddengames
 using System;
-using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using SFB;
 using NaughtyAttributes;
 using RotaryHeart.Lib.SerializableDictionary;
-using System.Linq.Expressions;
 
 namespace h1ddengames {
-    [CreateAssetMenu(fileName = "New Automated Task", menuName = "hiddengames/New Automated Task")]
-    public class AutomatedTask : ScriptableObject {
+    public class AutomatedTask : MonoBehaviour {
         #region Exposed Fields
-        public float delayBeforeStartingAutomation;
-        public Action taskToDoBeforeAutomating;
-        public Action taskToAutomate;
-        public Action taskToDoAfterAutomating;
-        public float delayAfterFinishingAutomation;
-
-        public string taskToDoBeforeName;
-        public string taskToDoName;
-        public string taskToDoAfterName;
+        [SerializeField] private int id;
+        [SerializeField] private UnityEvent task;
+        [SerializeField] private float delayBeforeTask;
+        [SerializeField] private float delayAfterTask;
+        [SerializeField] private bool hasInvokedTask = false;
+        [SerializeField] private bool hasFinishedDelayAfterTask = false;
         #endregion
 
         #region Private Fields
+        private float delayBeforeTaskBackup;
+        private float delayAfterTaskBackup;
         #endregion
 
         #region Getters/Setters/Constructors
+        public AutomatedTask(int id, UnityEvent task, float delayBefore, float delayAfter) {
+            Id = id;
+            Task = task;
+            DelayBeforeTask = delayBefore;
+            DelayAfterTask = delayAfter;
+            HasInvokedTask = false;
+            HasFinishedDelayAfterTask = false;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public UnityEvent Task { get => task; set => task = value; }
+        public float DelayBeforeTask { get => delayBeforeTask; set => delayBeforeTask = value; }
+        public float DelayAfterTask { get => delayAfterTask; set => delayAfterTask = value; }
+        public bool HasInvokedTask { get => hasInvokedTask; set => hasInvokedTask = value; }
+        public bool HasFinishedDelayAfterTask { get => hasFinishedDelayAfterTask; set => hasFinishedDelayAfterTask = value; }
         #endregion
 
         #region My Methods
+        public void Reset() {
+            DelayBeforeTask = delayBeforeTaskBackup;
+            DelayAfterTask = delayAfterTaskBackup;
+            HasInvokedTask = false;
+            HasFinishedDelayAfterTask = false;
+        }
         #endregion
 
         #region Unity Methods
         void OnEnable() {
-
-        }
-
-        void Start() {
-
-        }
-
-        void Update() {
-
-        }
-
-        void OnDisable() {
-
-        }
-        #endregion
-
-        #region Helper Methods
-        public override string ToString() {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            stringBuilder.Append("Delay before starting automation: ")
-                        .Append(delayBeforeStartingAutomation);
-
-            stringBuilder.Append(" seconds.\r\nTask to do before starting automation: ")
-                            .Append(taskToDoBeforeName);
-
-            stringBuilder.Append("\r\nTask to do: ")
-                            .Append(taskToDoName);
-
-            stringBuilder.Append(".\r\nTask to do after finishing automation: ")
-                            .Append(taskToDoAfterName);
-
-            stringBuilder.Append(".\r\nDelay after task is finished: ")
-                            .Append(delayAfterFinishingAutomation)
-                            .Append(" seconds.");
-
-            return stringBuilder.ToString();
+            delayBeforeTaskBackup = DelayBeforeTask;
+            delayAfterTaskBackup = DelayAfterTask;
         }
         #endregion
     }

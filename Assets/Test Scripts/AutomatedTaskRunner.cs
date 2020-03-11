@@ -7,97 +7,129 @@ using TMPro;
 using SFB;
 using NaughtyAttributes;
 using RotaryHeart.Lib.SerializableDictionary;
+using ReorderableListAttribute = NaughtyAttributes.ReorderableListAttribute;
 
 namespace h1ddengames {
     public class AutomatedTaskRunner : MonoBehaviour {
         #region Exposed Fields
-        [NaughtyAttributes.ReorderableList] public List<AutomatedTask> listOfAutomatedTasks = new List<AutomatedTask>();
+        [ReorderableList, SerializeField] List<AutomatedTask> automatedTasks = new List<AutomatedTask>();
 
-        public AutomatedTask debugAutomatedTask;
+        [SerializeField] private bool tasksShouldRun = true;
+        [SerializeField] private bool loopTasks = true;
+        [SerializeField] private int amountOfTimesToReunTasks = 2;
 
-        public float debugDelayBeforeStartingAutomation;
-        public Action debugTaskToDoBeforeAutomating;
-        public Action debugTaskToAutomate;
-        public Action debugTaskToDoAfterAutomating;
-        public float debugDelayAfterFinishingAutomation;
-
-        public string debugTaskToDoBeforeName;
-        public string debugTaskToDoName;
-        public string debugTaskToDoAfterName;
+        public int index = 0;
         #endregion
 
         #region Private Fields
+        public List<AutomatedTask> AutomatedTasks { get => automatedTasks; set => automatedTasks = value; }
+        public bool TasksShouldRun { get => tasksShouldRun; set => tasksShouldRun = value; }
+        public bool LoopTasks { get => loopTasks; set => loopTasks = value; }
+        public int AmountOfTimesToReunTasks { get => amountOfTimesToReunTasks; set => amountOfTimesToReunTasks = value; }
         #endregion
 
         #region Getters/Setters/Constructors
         #endregion
 
-        #region My Methods
-        public void DoBeforeTask() {
-            Debug.Log("Called from inside Do Before Task Method.");
-        }
-
-        public void DoTask() {
+        #region Test Methods
+        public void Task() {
             Debug.Log("Called from inside Do Task Method.");
         }
 
-        public void DoAfterTask() {
-            Debug.Log("Called from inside Do After Method.");
+        public void Task1() {
+            Debug.Log("Called from inside Do Task1 Method.");
         }
 
-        public void SetDebugVariables(AutomatedTask debugAutomatedTask) {
-            debugDelayBeforeStartingAutomation = debugAutomatedTask.delayBeforeStartingAutomation;
-            debugTaskToDoBeforeAutomating = debugAutomatedTask.taskToDoBeforeAutomating;
-            debugTaskToAutomate = debugAutomatedTask.taskToAutomate;
-            debugTaskToDoAfterAutomating = debugAutomatedTask.taskToDoAfterAutomating;
-            debugDelayAfterFinishingAutomation = debugAutomatedTask.delayAfterFinishingAutomation;
-
-            debugTaskToDoBeforeName = debugAutomatedTask.taskToDoBeforeName;
-            debugTaskToDoName = debugAutomatedTask.taskToDoName;
-            debugTaskToDoAfterName = debugAutomatedTask.taskToDoAfterName;
+        public void Task2() {
+            Debug.Log("Called from inside Do Task2 Method.");
         }
 
-        [NaughtyAttributes.Button("Clear Debug Variables")]
-        public void ClearDebugVariables() {
-            debugDelayBeforeStartingAutomation = 0;
-            debugTaskToDoBeforeAutomating = null;
-            debugTaskToAutomate = null;
-            debugTaskToDoAfterAutomating = null;
-            debugDelayAfterFinishingAutomation = 0;
-
-            debugTaskToDoBeforeName = "";
-            debugTaskToDoName = "";
-            debugTaskToDoAfterName = "";
+        public void Task3() {
+            Debug.Log("Called from inside Do Task3 Method.");
         }
 
-        [NaughtyAttributes.Button("Test Method 1")]
-        void TestMethod1() {
-            debugAutomatedTask =
-                AutomatedTaskBuilder.DefineTask()
-                                    .WithDelayBefore(4f)
-                                    .DoBefore(DoBeforeTask, "Task")
-                                    .DoTask(DoTask)
-                                    .DoPost(DoAfterTask)
-                                    .WithDelayAfter(5f).Build();
+        public void TaskWithCount(int count) {
+            Debug.Log("Called from inside Do Task " + count + " Method.");
+        }
 
-            SetDebugVariables(debugAutomatedTask);
+        public void TaskWithString(string str) {
+            Debug.Log("Called from inside" + str + " Method.");
+        }
+        #endregion
 
-            Debug.Log(debugAutomatedTask.ToString());
-        }        
+        #region My Methods
+        public bool AreAllTasksAreDone() {
+            foreach (var task in AutomatedTasks) {
+                if(!task.HasInvokedTask || !task.HasFinishedDelayAfterTask) {
+                    // Return false if even a single HasInvokedTask 
+                    // or HasFinishedDelayAfterTask is false for in any AutomatedTask
+                    // contained in automatedTasks list.
+                    return false;
+                }
+            }
+
+            // Return true when HasInvokedTask 
+            // and HasFinishedDelayAfterTask is true 
+            // for every AutomatedTask.
+            return true;
+        }
+
+        public void Run(AutomatedTask automatedTask) {
+            // Reset index for each time that a Task has been completed.
+            if (index >= AutomatedTasks.Count) {
+                index = 0;
+            }
+
+            // Wait until the Delay Before timer has reached 0.
+            if (automatedTask.DelayBeforeTask > 0) {
+                automatedTask.DelayBeforeTask -= Time.deltaTime;
+                return;
+            }
+
+            if(!automatedTask.HasInvokedTask) {
+                // Execute the Task
+                automatedTask.Task?.Invoke();
+
+                // Mark the Task as completed.
+                automatedTask.HasInvokedTask = true;
+            }
+
+            // Wait until the Delay After timer has reached 0.
+            if (automatedTask.DelayAfterTask > 0) {
+                automatedTask.DelayAfterTask -= Time.deltaTime;
+                return;
+            }
+
+            // Mark that Delay After timer has reached 0.
+            automatedTask.HasFinishedDelayAfterTask = true;
+
+            // When all Tasks have finished, remove reference and stop this loop from running.
+            if (AreAllTasksAreDone()) {
+                if (!LoopTasks) {
+                    TasksShouldRun = false;
+                    AmountOfTimesToReunTasks = 0;
+                } else {
+                    AmountOfTimesToReunTasks--;
+
+                    if(AmountOfTimesToReunTasks <= 0) {
+                        TasksShouldRun = false;
+                    }
+                }
+
+                index = 0;
+                foreach (var task in AutomatedTasks) {
+                    task.Reset();
+                }
+
+            } else {
+                index++;
+            }
+        }
         
-        [NaughtyAttributes.Button("Test Method 2")]
-        void TestMethod2() {
-
-            debugAutomatedTask =
-                AutomatedTaskBuilder.DefineTask()
-                                    .WithDelayBefore(4f).DoBefore(delegate { Debug.Log("Delegate call before task"); }, "Before Task Delegate")
-                                    .DoTask(delegate { Debug.Log("Delegate call as task"); }, "Random task name")
-                                    .DoPost(delegate { Debug.Log("Delegate call after task"); })
-                                    .WithDelayAfter(5f).Build();
-
-            SetDebugVariables(debugAutomatedTask);
-
-            Debug.Log(debugAutomatedTask.ToString());
+        public void ChangeTasks(List<AutomatedTask> tasks) {
+            TasksShouldRun = false;
+            AutomatedTasks.Clear();
+            AutomatedTasks = tasks;
         }
         #endregion
 
@@ -108,12 +140,12 @@ namespace h1ddengames {
 
         void Start() {
             
-
-
         }
 
         void Update() {
-
+            if(TasksShouldRun) {
+                Run(AutomatedTasks[index]);
+            }
         }
 
         void OnDisable() {
