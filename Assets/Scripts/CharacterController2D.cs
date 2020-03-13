@@ -274,6 +274,8 @@ namespace h1ddengames {
             } else {
                 CharacterRigidBody2D.velocity = new Vector2(0, CharacterRigidBody2D.velocity.y);
             }
+
+            AnimateRun(horizontalInput);
         }
 
         public void Move() {
@@ -310,16 +312,16 @@ namespace h1ddengames {
                     // isGrounded is set to true.
                     // Calculate the velocity required to achieve the target jump height.
                     velocity.y = Mathf.Sqrt(2 * CharacterJumpHeight * Mathf.Abs(Physics2D.gravity.y));
-                    AnimateJump();
+                    //AnimateJump(); // Handled using event.
                     IsGrounded = false;
                     CurrentConsecutiveJumps--;
                     LastJumped = 0f;
                 } else if (Input.GetButton("Jump") && IsGrounded) {
                     velocity.y = Mathf.Sqrt(2 * CharacterJumpHeight * Mathf.Abs(Physics2D.gravity.y));
-                    AnimateJump();
+                    //AnimateJump(); // Handled using event.
                     IsGrounded = false;
                     CurrentConsecutiveJumps--;
-                    LastJumped = 0f;
+                    //LastJumped = 0f; // While holding jump button down, allow LastJumped to increment.
                 } else if(Input.GetButton("Jump") && !IsGrounded) {
                     // Case: When player holds the jump key, they will be able to gain additional height and hover.
                     // This return stops the above behaviour.
@@ -391,6 +393,7 @@ namespace h1ddengames {
                 // Just became grounded this frame.
                 IsGrounded = true;
                 HasLandedEvent.Invoke();
+                EndJump();
             }
         }
 
@@ -409,8 +412,8 @@ namespace h1ddengames {
         #region Unity Methods
         void OnEnable() {
             automatedMoveModule = new AutomatedMoveModule(this);
-            HasJumpedEvent.AddListener(delegate { Debug.Log("HasJumped"); });
-            HasLandedEvent.AddListener(delegate { Debug.Log("hasLanded"); CurrentConsecutiveJumps = MaxConsecutiveJumps; });
+            HasJumpedEvent.AddListener(delegate { AnimateJump(); });
+            HasLandedEvent.AddListener(delegate { CurrentConsecutiveJumps = MaxConsecutiveJumps; EndJump(); });
         }
 
         void Start() {
