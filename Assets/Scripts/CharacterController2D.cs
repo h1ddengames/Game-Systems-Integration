@@ -124,7 +124,11 @@ namespace h1ddengames {
 
         [BoxGroup("Events"), 
         SerializeField] 
-        private bool showHasLandedEvent = false;
+        private bool showHasLandedEvent = false;        
+        
+        [BoxGroup("Events"), 
+        SerializeField] 
+        private bool showHasChangedDirectionEvent = false;
 
         [BoxGroup("Events"),
         InfoBox("This event will only run on the frame that isGrounded becomes false.", EInfoBoxType.Normal),
@@ -136,7 +140,13 @@ namespace h1ddengames {
         InfoBox("This event will only run on the frame that isGrounded becomes true.", EInfoBoxType.Normal),
         ShowIf("showHasLandedEvent"),
         SerializeField]
-        private UnityEvent hasLandedEvent;
+        private UnityEvent hasLandedEvent;        
+        
+        [BoxGroup("Events"),
+        InfoBox("This event will only run on the frame that the character changes direction.", EInfoBoxType.Normal),
+        ShowIf("showHasChangedDirectionEvent"),
+        SerializeField]
+        private UnityEvent hasChangedDirectionEvent;
         #endregion
 
 
@@ -188,6 +198,7 @@ namespace h1ddengames {
         public CircleCollider2D CharacterCircleCollider2D { get => characterCircleCollider2D; set => characterCircleCollider2D = value; }
         public UnityEvent HasJumpedEvent { get => hasJumpedEvent; set => hasJumpedEvent = value; }
         public UnityEvent HasLandedEvent { get => hasLandedEvent; set => hasLandedEvent = value; }
+        public UnityEvent HasChangedDirectionEvent { get => hasChangedDirectionEvent; set => hasChangedDirectionEvent = value; }
         public List<WayPoint> ListOfWayPoints { get => listOfWayPoints; set => listOfWayPoints = value; }
         public bool IsBeingControlledByCode { get => isBeingControlledByCode; set => isBeingControlledByCode = value; }
         public float LastJumped { get => lastJumped; set => lastJumped = value; }
@@ -235,8 +246,10 @@ namespace h1ddengames {
             if (CharacterSpriteRenderer != null) {
                 if (horizontalInput < -0.01f) {
                     CharacterSpriteRenderer.flipX = true;
+                    HasChangedDirectionEvent?.Invoke();
                 } else if (horizontalInput > 0.01f) {
                     CharacterSpriteRenderer.flipX = false;
+                    HasChangedDirectionEvent?.Invoke();
                 }
             }
         }
@@ -250,6 +263,7 @@ namespace h1ddengames {
                 Vector3 flipped = transform.localScale;
                 flipped.x *= -1f;
                 transform.localScale = flipped;
+                HasChangedDirectionEvent?.Invoke();
             }
         }
         #endregion
@@ -329,7 +343,7 @@ namespace h1ddengames {
                 }
 
                 if(!IsGrounded) {
-                    HasJumpedEvent.Invoke();
+                    HasJumpedEvent?.Invoke();
                 }
             }
 
@@ -392,7 +406,7 @@ namespace h1ddengames {
             } else if(!lastFrameIsGrounded && currentFrameIsGrounded) {
                 // Just became grounded this frame.
                 IsGrounded = true;
-                HasLandedEvent.Invoke();
+                HasLandedEvent?.Invoke();
                 EndJump();
             }
         }
