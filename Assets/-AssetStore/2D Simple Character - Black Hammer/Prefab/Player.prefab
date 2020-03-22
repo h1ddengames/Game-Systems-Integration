@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1051281039}
   - component: {fileID: 1051281041}
   - component: {fileID: 1051281040}
-  - component: {fileID: 1699837821}
+  - component: {fileID: 4271320008264346112}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -287,7 +287,7 @@ CircleCollider2D:
   m_Offset: {x: 0.018465191, y: -0.14}
   serializedVersion: 2
   m_Radius: 0.2726318
---- !u!114 &1699837821
+--- !u!114 &4271320008264346112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,52 +299,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9a48a0338095641b19bf5b1c81f071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showConfiguration: 1
+  showConfiguration: 0
   characterSpeed: 5
   characterJumpHeight: 1
-  jumpDelay: 0.25
-  currentConsecutiveJumps: 4
-  maxConsecutiveJumps: 4
+  characterJumpDelay: 0.25
+  currentConsecutiveJumps: 2
+  maxConsecutiveJumps: 2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   characterUsesSpriteRenderer: 0
-  showQuickInformation: 1
+  showQuickInformation: 0
   velocity: {x: 0, y: 0}
   lastJumped: 0
-  isGrounded: 1
+  isCharacterGrounded: 1
   isFacingRight: 0
   isAllowedToMove: 1
   isBeingControlledByCode: 0
   loopThroughAllWaypoints: 0
   showWaypoints: 0
-  listOfWayPoints:
-  - location: {x: 5, y: 0.42}
-    moveSpeedToWaypoint: 4
-    delayBeforeMovingToWaypoint: 2
-    delayAfterReachingWaypoint: 1
-    hasArrived: 0
-  - location: {x: 8, y: 0.42}
-    moveSpeedToWaypoint: 6
-    delayBeforeMovingToWaypoint: 2
-    delayAfterReachingWaypoint: 2.5
-    hasArrived: 0
-  - location: {x: 2, y: 0.42}
-    moveSpeedToWaypoint: 3
-    delayBeforeMovingToWaypoint: 1
-    delayAfterReachingWaypoint: 2
-    hasArrived: 0
-  - location: {x: -3, y: 0.42}
-    moveSpeedToWaypoint: 2
-    delayBeforeMovingToWaypoint: 1.2
-    delayAfterReachingWaypoint: 2
-    hasArrived: 0
+  listOfWayPoints: []
   showHasJumpedEvent: 0
-  showHasLandedEvent: 0
   hasJumpedEvent:
     m_PersistentCalls:
       m_Calls: []
+  showHasLandedEvent: 0
   hasLandedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showIsGroundedEvent: 0
+  isGroundedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showIsNotGroundedEvent: 0
+  isNotGroundedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showHasChangedDirectionEvent: 0
+  hasChangedDirectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showIsMovingEvent: 0
+  isMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showIsNotMovingEvent: 0
+  isNotMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showHasStartedMovingEvent: 0
+  hasStartedMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showHasStoppedMovingEvent: 0
+  hasStoppedMovingEvent:
     m_PersistentCalls:
       m_Calls: []
   showReferences: 0
@@ -503,7 +511,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -696,7 +704,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

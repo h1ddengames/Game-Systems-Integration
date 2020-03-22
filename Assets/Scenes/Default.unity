@@ -4402,21 +4402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedTeleporter: {fileID: 1904388794}
-  speed: 10
-  isUsingTeleporter: 0
-  isMoving: 0
-  isInCollider: 0
-  activateTeleporterKey: 119
-  enteredTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  exitedTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  pressedActivateKeyEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &302108339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4488,7 +4473,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 322562278}
-  - component: {fileID: 322562277}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Untagged
@@ -4496,25 +4480,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &322562277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322562276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83c98ab7fe194ca9229dde58b4ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1699837820}
-  shouldFollowTarget: 1
-  speed: 5
-  teleportDistance: 5
-  followDistance: 0.5
-  xOffset: 1
-  yOffset: 0.25
 --- !u!4 &322562278
 Transform:
   m_ObjectHideFlags: 0
@@ -4923,7 +4888,7 @@ MonoBehaviour:
   gameVersion: 0.8
   versionText: {fileID: 833669528}
   player: {fileID: 1699837814}
-  playerCharacterController2D: {fileID: 1699837821}
+  playerCharacterController2D: {fileID: 0}
   playerSpriteRenderer: {fileID: 0}
   playerboxCollider2D: {fileID: 1699837817}
   playerRigidBody2D: {fileID: 1699837818}
@@ -5165,89 +5130,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: showReferences
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: jumpDelay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: showHasJumpedEvent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: showHasChangedDirectionEvent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1923814496}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 322562277}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: hasChangedDirectionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096975540831286, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096975540831286, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096975540831286, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096975540831286, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096975540831286, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210157123753652, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5293,15 +5178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 212798183564874916, guid: 6877fb649746c674d8fbbcf60d41892b,
+    - target: {fileID: 4271320008264346112, guid: 6877fb649746c674d8fbbcf60d41892b,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 212825760485200248, guid: 6877fb649746c674d8fbbcf60d41892b,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 9
+      propertyPath: showReferences
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
@@ -6180,7 +6060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -30, y: 0}
+  m_AnchoredPosition: {x: -29.999756, y: 0}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &833669528
@@ -7826,21 +7706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedTeleporter: {fileID: 1882890154}
-  speed: 10
-  isUsingTeleporter: 0
-  isMoving: 0
-  isInCollider: 0
-  activateTeleporterKey: 119
-  enteredTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  exitedTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  pressedActivateKeyEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &1212412545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8842,7 +8707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718bdb24065011e4682e56c194fb79e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  _name: 
   id: 0
   oldName: 
   oldId: 0
@@ -9098,18 +8963,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 629975514}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1699837815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699837814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d27d8f166d9024091fc12349ce817c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1699837817 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1051281041, guid: 6877fb649746c674d8fbbcf60d41892b,
@@ -9128,18 +8981,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 629975514}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1699837821 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1699837821, guid: 6877fb649746c674d8fbbcf60d41892b,
-    type: 3}
-  m_PrefabInstance: {fileID: 629975514}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699837814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9a48a0338095641b19bf5b1c81f071, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1759680474
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,21 +9255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedTeleporter: {fileID: 1212412544}
-  speed: 10
-  isUsingTeleporter: 0
-  isMoving: 0
-  isInCollider: 0
-  activateTeleporterKey: 119
-  enteredTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  exitedTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  pressedActivateKeyEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &1882890155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9627,21 +9453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedTeleporter: {fileID: 302108338}
-  speed: 10
-  isUsingTeleporter: 0
-  isMoving: 0
-  isInCollider: 0
-  activateTeleporterKey: 119
-  enteredTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  exitedTeleporterColliderEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  pressedActivateKeyEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &1904388795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9831,7 +9642,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1923814495}
   - component: {fileID: 1923814494}
-  - component: {fileID: 1923814496}
   m_Layer: 0
   m_Name: Sword Halo
   m_TagString: Untagged
@@ -9875,25 +9685,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1923814496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923814493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83c98ab7fe194ca9229dde58b4ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1699837820}
-  shouldFollowTarget: 1
-  speed: 5
-  teleportDistance: 5
-  followDistance: 0.5
-  xOffset: 0
-  yOffset: 1.25
 --- !u!1 &1985133583
 GameObject:
   m_ObjectHideFlags: 0
