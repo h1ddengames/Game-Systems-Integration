@@ -62,6 +62,11 @@ namespace h1ddengames {
                         item.Timer = 0;
                     }
                 }
+
+                // Reset hold timer if the key is unpressed.
+                if(Input.GetKeyUp(item.Key)) {
+                    item.Timer = 0;
+                }
             }
         }
 
