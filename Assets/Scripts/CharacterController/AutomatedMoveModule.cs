@@ -26,7 +26,7 @@ namespace h1ddengames {
         #region Getters/Setters/Constructors
         public AutomatedMoveModule(CharacterController2D characterController2D) {
             this.characterController2D = characterController2D;
-            defaultMoveSpeed = this.characterController2D.CharacterSpeed;
+            defaultMoveSpeed = this.characterController2D.CharacterMoveSpeed;
         }
         #endregion
 
@@ -71,7 +71,7 @@ namespace h1ddengames {
                     // Check to see if the player is close enough to the waypoint.
                     if(Vector2.Distance(characterController2D.transform.position, characterController2D.ListOfWayPoints[index].Location) < 0.2f) {
                         // Stop the player and wait until delay after reaching waypoint is 0.
-                        characterController2D.Velocity = Vector2.zero;
+                        characterController2D.CharacterRigidBody2D.velocity = Vector2.zero;
                         characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint -= Time.deltaTime;
 
                         if(characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint <= 0) {

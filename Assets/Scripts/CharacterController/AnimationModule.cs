@@ -23,8 +23,8 @@ namespace h1ddengames {
 		#endregion
 
 		#region Getters/Setters/Constructors
-		public AnimationModule(Animator characterAnimator) {
-			this.characterAnimator = characterAnimator;
+		public AnimationModule(GameObject character) {
+			this.characterAnimator = character.GetComponent<Animator>();
 			this.characterAnimator.runtimeAnimatorController.animationClips
 				.ToList()
 				.ForEach(c => listOfAnimationClips.Add(c.name));
@@ -32,10 +32,16 @@ namespace h1ddengames {
 		#endregion
 
 		#region Animation Methods
+		public void AnimateCharacterFlip(Transform character) {
+			Vector2 scale = character.localScale;
+			scale.x *= -1;
+			character.localScale = scale;
+		}
+
 		// Uses BlendTree for animating between movement and idle animations.
 		// Does not require EndAnimateMove for the above reason.
-		public void AnimateMove() {
-
+		public void AnimateMove(float velocity) {
+			characterAnimator.SetFloat("velocity", velocity);
 		}
 
 		public void AnimateJump() {

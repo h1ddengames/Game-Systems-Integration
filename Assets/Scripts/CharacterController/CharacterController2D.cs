@@ -9,6 +9,7 @@ using TMPro;
 using SFB;
 using NaughtyAttributes;
 using RotaryHeart.Lib.SerializableDictionary;
+using UnityEngine.InputSystem;
 
 namespace h1ddengames {
     public class CharacterController2D : MonoBehaviour {
@@ -22,7 +23,7 @@ namespace h1ddengames {
         Tooltip("How fast should the player be able to move left and right?"),
         ShowIf("showConfiguration"),
         SerializeField]
-        private float characterSpeed = 5.0f;
+        private float characterMoveSpeed = 5.0f;
 
         [BoxGroup("Configuration"),
         Tooltip("How fast should the player be able to move left and right?"),
@@ -69,7 +70,7 @@ namespace h1ddengames {
         [BoxGroup("Quick Information"),
         ShowIf("showQuickInformation"),
         SerializeField]
-        private Vector2 velocity;
+        private Vector2 movementInput;
 
         [BoxGroup("Quick Information"),
         Tooltip("The last time in milliseconds that the player has jumped."),
@@ -254,21 +255,30 @@ namespace h1ddengames {
         ShowIf("showReferences"),
         SerializeField]
         private CircleCollider2D characterCircleCollider2D;
+
+        [BoxGroup("References"),
+            ShowIf("showReferences"),
+            SerializeField]
+        private PhysicsMaterial2D stickyMaterial;
+
+        [BoxGroup("References"),
+            ShowIf("showReferences"),
+            SerializeField]
+        private PhysicsMaterial2D slipperyMaterial;
         #endregion
         #endregion
 
         #region Private Fields
         private AutomatedMoveModule automatedMoveModule;
         private AnimationModule animationModule;
-        private float horizontalInput;
-        private float verticalInput;
+        private PlayerInputModule playerInputModule;
 
         private Collider2D[] debugHits;
         private int debugGroundColliderCounter;
         #endregion
 
         #region Getters/Setters/Constructors
-        public float CharacterSpeed { get => characterSpeed; set => characterSpeed = value; }
+        public float CharacterMoveSpeed { get => characterMoveSpeed; set => characterMoveSpeed = value; }
         public float CharacterJumpHeight { get => characterJumpHeight; set => characterJumpHeight = value; }
         public float CharacterJumpDelay { get => characterJumpDelay; set => characterJumpDelay = value; }
         public int CurrentConsecutiveJumps { get => currentConsecutiveJumps; set => currentConsecutiveJumps = value; }
@@ -300,29 +310,25 @@ namespace h1ddengames {
         public Rigidbody2D CharacterRigidBody2D { get => characterRigidBody2D; set => characterRigidBody2D = value; }
         public BoxCollider2D CharacterBoxCollider2D { get => characterBoxCollider2D; set => characterBoxCollider2D = value; }
         public CircleCollider2D CharacterCircleCollider2D { get => characterCircleCollider2D; set => characterCircleCollider2D = value; }
-
-        public Vector2 Velocity { get => velocity; set => velocity = value; }
         #endregion
 
         #region My Methods
-        public void Crouch(bool isCrouching) {
-            CharacterBoxCollider2D.enabled = isCrouching;
-        }
-
-        public void Jump() {
-
-        }
-
         public void CheckForGround() {
 
         }
 
-        public void Move() {
-
+        public void Crouch() {
+            CharacterBoxCollider2D.enabled = !CharacterBoxCollider2D.enabled;
         }
 
-        public void GetInput() {
+        public void Jump() {
+            CharacterRigidBody2D.AddForce(new Vector2(0f, CharacterJumpHeight), ForceMode2D.Impulse);
+        }
 
+        public void Move() {
+            float xPosition = CharacterRigidBody2D.position.x + (movementInput.x * CharacterMoveSpeed * Time.fixedDeltaTime);
+            float yPosition = CharacterRigidBody2D.position.y + (0.5f * Physics2D.gravity.y * Time.fixedDeltaTime);
+            CharacterRigidBody2D.MovePosition(new Vector2(xPosition, yPosition));
         }
 
         // TODO: Apply Knockback
@@ -339,22 +345,22 @@ namespace h1ddengames {
         #endregion
 
         #region Unity Methods
-        void Start() {
+        private void OnEnable() {
+
+        }
+
+        void Awake() {
             automatedMoveModule = new AutomatedMoveModule(this);
-            animationModule = new AnimationModule(CharacterAnimator);
+            animationModule = new AnimationModule(gameObject);
+            playerInputModule = PlayerInputModule.Instance;
         }
 
-        // For gathering input.
-        void Update() {
-
-        }
-
-        // For Physics related calculations of objects.
+        // For Physics related calculations of objects. Movement methods should be called here.
         private void FixedUpdate() {
 
         }
 
-        // For moving the visuals of objects.
+        // For moving the visuals of objects. Animation methods should be called here.
         private void LateUpdate() {
 
         }
