@@ -363,10 +363,6 @@ MonoBehaviour:
   characterCircleCollider2D: {fileID: 1051281040}
   stickyMaterial: {fileID: 6200000, guid: ad1a8da17d45de248aebebe693811fea, type: 2}
   slipperyMaterial: {fileID: 6200000, guid: 40eadd890156e654aa1c0c7093a1787d, type: 2}
-  shouldMoveBeCalled: 0
-  shouldJumpBeCalled: 0
-  shouldCrouchBeCalled: 0
-  shouldAnimateFlipCharacterBeCalled: 0
 --- !u!1 &1315759352830414
 GameObject:
   m_ObjectHideFlags: 0
