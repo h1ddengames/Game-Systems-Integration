@@ -1,34 +1,32 @@
 ﻿// Created by h1ddengames
+// Attributes being used within this class require:
+// https://github.com/dbrizov/NaughtyAttributes
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using SFB;
+using UnityEngine.Events;
 using NaughtyAttributes;
-using RotaryHeart.Lib.SerializableDictionary;
 using ReorderableListAttribute = NaughtyAttributes.ReorderableListAttribute;
 
 namespace h1ddengames {
     public class AutomatedTaskRunner : MonoBehaviour {
         #region Exposed Fields
-        [ReorderableList, SerializeField] List<AutomatedTask> automatedTasks = new List<AutomatedTask>();
-
-        [SerializeField] private bool tasksShouldRun = true;
-        [SerializeField] private bool loopTasks = true;
-        [SerializeField] private int amountOfTimesToReunTasks = 2;
-
-        public int index = 0;
+        [BoxGroup("Configuration"), SerializeField] private bool tasksShouldRun = true;
+        [BoxGroup("Configuration"), SerializeField] private bool loopTasks = true;
+        [BoxGroup("Configuration"), SerializeField] private int amountOfTimesToReunTasks = 2;
+        [BoxGroup("Tasks"), ReorderableList, SerializeField] List<AutomatedTask> automatedTasks = new List<AutomatedTask>();
         #endregion
 
         #region Private Fields
-        public List<AutomatedTask> AutomatedTasks { get => automatedTasks; set => automatedTasks = value; }
         public bool TasksShouldRun { get => tasksShouldRun; set => tasksShouldRun = value; }
         public bool LoopTasks { get => loopTasks; set => loopTasks = value; }
         public int AmountOfTimesToReunTasks { get => amountOfTimesToReunTasks; set => amountOfTimesToReunTasks = value; }
+        public List<AutomatedTask> AutomatedTasks { get => automatedTasks; set => automatedTasks = value; }
         #endregion
 
         #region Getters/Setters/Constructors
+        private int index = 0;
         #endregion
 
         #region Test Methods
@@ -113,6 +111,7 @@ namespace h1ddengames {
 
                     if(AmountOfTimesToReunTasks <= 0) {
                         TasksShouldRun = false;
+                        LoopTasks = false;
                     }
                 }
 
@@ -135,7 +134,9 @@ namespace h1ddengames {
 
         #region Unity Methods
         void OnEnable() {
-
+            foreach(var task in AutomatedTasks) {
+                task.SetBackup();
+            }
         }
 
         void Start() {
@@ -154,6 +155,54 @@ namespace h1ddengames {
         #endregion
 
         #region Helper Methods
+        #endregion
+    }
+
+    [Serializable]
+    public class AutomatedTask {
+        #region Exposed Fields
+        [BoxedHeader("Configuration"), SerializeField] private float delayBeforeTask;
+        [SerializeField] private float delayAfterTask;
+        [SerializeField] private bool hasInvokedTask = false;
+        [SerializeField] private bool hasFinishedDelayAfterTask = false;
+        [Space(10), SerializeField] private UnityEvent task;
+        #endregion
+
+        #region Private Fields
+        private float delayBeforeTaskBackup;
+        private float delayAfterTaskBackup;
+        #endregion
+
+        #region Getters/Setters/Constructors
+        public AutomatedTask(UnityEvent task, float delayBefore, float delayAfter) {
+            Task = task;
+            DelayBeforeTask = delayBefore;
+            DelayAfterTask = delayAfter;
+            delayBeforeTaskBackup = DelayBeforeTask;
+            delayAfterTaskBackup = DelayAfterTask;
+            HasInvokedTask = false;
+            HasFinishedDelayAfterTask = false;
+        }
+
+        public UnityEvent Task { get => task; set => task = value; }
+        public float DelayBeforeTask { get => delayBeforeTask; set => delayBeforeTask = value; }
+        public float DelayAfterTask { get => delayAfterTask; set => delayAfterTask = value; }
+        public bool HasInvokedTask { get => hasInvokedTask; set => hasInvokedTask = value; }
+        public bool HasFinishedDelayAfterTask { get => hasFinishedDelayAfterTask; set => hasFinishedDelayAfterTask = value; }
+        #endregion
+
+        #region My Methods
+        public void SetBackup() {
+            delayBeforeTaskBackup = DelayBeforeTask;
+            delayAfterTaskBackup = DelayAfterTask;
+        }
+
+        public void Reset() {
+            DelayBeforeTask = delayBeforeTaskBackup;
+            DelayAfterTask = delayAfterTaskBackup;
+            HasInvokedTask = false;
+            HasFinishedDelayAfterTask = false;
+        }
         #endregion
     }
 }

@@ -1,15 +1,9 @@
 ﻿// Created by h1ddengames
+
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using TMPro;
-using SFB;
-using NaughtyAttributes;
-using RotaryHeart.Lib.SerializableDictionary;
 
 namespace h1ddengames {
 	[Serializable]

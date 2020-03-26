@@ -1,15 +1,11 @@
 ﻿// Created by h1ddengames
-using System;
-using System.Collections;
+// Attributes being used within this class require:
+// https://github.com/dbrizov/NaughtyAttributes
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using TMPro;
-using SFB;
 using NaughtyAttributes;
-using RotaryHeart.Lib.SerializableDictionary;
-using UnityEngine.InputSystem;
 
 namespace h1ddengames {
     public class CharacterController2D : MonoBehaviour {

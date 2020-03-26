@@ -5121,7 +5121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &532084766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5134,8 +5134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082c7a5beb5db2f4896ea3fe44fcfb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tasksShouldRun: 1
+  loopTasks: 1
+  amountOfTimesToReunTasks: 3
   automatedTasks:
-  - id: 0
+  - delayBeforeTask: 1
+    delayAfterTask: 1
+    hasInvokedTask: 0
+    hasFinishedDelayAfterTask: 0
     task:
       m_PersistentCalls:
         m_Calls:
@@ -5161,11 +5167,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
-    delayBeforeTask: 2
+  - delayBeforeTask: 1
     delayAfterTask: 1
     hasInvokedTask: 0
     hasFinishedDelayAfterTask: 0
-  - id: 0
     task:
       m_PersistentCalls:
         m_Calls:
@@ -5180,11 +5185,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
-    delayBeforeTask: 1
-    delayAfterTask: 2
+  - delayBeforeTask: 1
+    delayAfterTask: 1
     hasInvokedTask: 0
     hasFinishedDelayAfterTask: 0
-  - id: 0
     task:
       m_PersistentCalls:
         m_Calls:
@@ -5199,14 +5203,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
-    delayBeforeTask: 1
-    delayAfterTask: 1
-    hasInvokedTask: 0
-    hasFinishedDelayAfterTask: 0
-  tasksShouldRun: 1
-  loopTasks: 0
-  amountOfTimesToReunTasks: 0
-  index: 0
 --- !u!4 &532084767
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,13 +5818,29 @@ MonoBehaviour:
   - key: 97
     holdThreshold: 2
     doubleTapThreshold: 0.3
-    showQuickInformation: 0
+    singlePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    doublePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    holdActions:
+      m_PersistentCalls:
+        m_Calls: []
     timer: 0
     lastTapTime: 0
   - key: 100
     holdThreshold: 1
     doubleTapThreshold: 0.4
-    showQuickInformation: 0
+    singlePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    doublePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    holdActions:
+      m_PersistentCalls:
+        m_Calls: []
     timer: 0
     lastTapTime: 0
 --- !u!4 &684480254

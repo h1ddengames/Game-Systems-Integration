@@ -1,15 +1,11 @@
 ﻿// Created by h1ddengames
-using System;
-using System.Linq;
-using System.Collections;
+// Attributes being used within this class require:
+// https://github.com/dbrizov/NaughtyAttributes
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using TMPro;
-using SFB;
 using NaughtyAttributes;
-using RotaryHeart.Lib.SerializableDictionary;
+using UnityEngine.Events;
 
 namespace h1ddengames {
     public class PlayerInputModule : Singleton<PlayerInputModule> {
@@ -43,11 +39,13 @@ namespace h1ddengames {
                 // Checking if a key has been pressed once.
                 if(Input.GetKeyDown(item.Key)) {
 
-                    Debug.Log(item.Key + " has been pressed!");
+                    //Debug.Log(item.Key + " has been pressed!");
+                    item.SinglePressActions?.Invoke();
 
                     // Checking if a key has been double pressed within a given timeframe.
                     if((Time.time - item.LastTapTime) < item.DoubleTapThreshold) {
-                        Debug.Log(item.Key + " has been double tapped!");
+                        //Debug.Log(item.Key + " has been double tapped!");
+                        item.DoublePressActions?.Invoke();
                     }
 
                     item.LastTapTime = Time.time;
@@ -58,7 +56,8 @@ namespace h1ddengames {
                     item.Timer += Time.deltaTime;
 
                     if(item.Timer > item.HoldThreshold) {
-                        Debug.Log(item.Key + " has been held for " + item.HoldThreshold + " seconds!");
+                        //Debug.Log(item.Key + " has been held for " + item.HoldThreshold + " seconds!");
+                        item.HoldActions?.Invoke();
                         item.Timer = 0;
                     }
                 }
@@ -96,13 +95,25 @@ namespace h1ddengames {
             "If greater than this value it is a single press."),
         SerializeField]
         private float doubleTapThreshold = 0.3f;
+
+        [Tooltip("The actions to be performed on single press of this button."),
+        Space(10),
+        SerializeField]
+        private UnityEvent singlePressActions;
+
+        [Tooltip("The actions to be performed on double press of this button."),
+        SerializeField]
+        private UnityEvent doublePressActions;
+
+        [Tooltip("The actions to be performed on holding of this button."),
+        SerializeField]
+        private UnityEvent holdActions;
         #endregion
 
         #region Quick Information
         [BoxedHeader("Quick Information"), Space(10)]
-        [BoxGroup("Quick Information"), SerializeField] private bool showQuickInformation;
-        [BoxGroup("Quick Information"), ShowIf("showQuickInformation"), SerializeField] private float timer = 0f;
-        [BoxGroup("Quick Information"), ShowIf("showQuickInformation"), SerializeField] private float lastTapTime = 0f;
+        [BoxGroup("Quick Information"), SerializeField] private float timer = 0f;
+        [BoxGroup("Quick Information"), SerializeField] private float lastTapTime = 0f;
         #endregion
 
         #region Getters/Setters/Constructors
@@ -117,6 +128,9 @@ namespace h1ddengames {
         public float LastTapTime { get => lastTapTime; set => lastTapTime = value; }
         public float HoldThreshold { get => holdThreshold; set => holdThreshold = value; }
         public float DoubleTapThreshold { get => doubleTapThreshold; set => doubleTapThreshold = value; }
+        public UnityEvent SinglePressActions { get => singlePressActions; set => singlePressActions = value; }
+        public UnityEvent DoublePressActions { get => doublePressActions; set => doublePressActions = value; }
+        public UnityEvent HoldActions { get => holdActions; set => holdActions = value; }
         #endregion
     }
 }
