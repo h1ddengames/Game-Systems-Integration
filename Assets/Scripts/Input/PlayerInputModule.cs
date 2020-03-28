@@ -55,15 +55,16 @@ namespace h1ddengames {
                 if(Input.GetKey(item.Key)) {
                     item.Timer += Time.deltaTime;
 
-                    if(item.Timer > item.HoldThreshold) {
+                    if(item.Timer > item.LongHoldThreshold) {
                         //Debug.Log(item.Key + " has been held for " + item.HoldThreshold + " seconds!");
-                        item.HoldActions?.Invoke();
+                        item.LongHoldActions?.Invoke();
                         item.Timer = 0;
                     }
                 }
 
                 // Reset hold timer if the key is unpressed.
                 if(Input.GetKeyUp(item.Key)) {
+                    item.KeyUpActions?.Invoke();
                     item.Timer = 0;
                 }
             }
@@ -88,7 +89,7 @@ namespace h1ddengames {
 
         [Tooltip("The length of time required for the key to be held down until the hold event fires."),
         SerializeField]
-        private float holdThreshold = 0.5f;
+        private float longHoldThreshold = 0.01f;
 
         [Tooltip("The length of time between two single presses. " +
             "If less than this value then it's a double press. " +
@@ -107,7 +108,11 @@ namespace h1ddengames {
 
         [Tooltip("The actions to be performed on holding of this button."),
         SerializeField]
-        private UnityEvent holdActions;
+        private UnityEvent longHoldActions;
+
+        [Tooltip("The actions to be performed on release of this button."),
+        SerializeField]
+        private UnityEvent keyUpActions;
         #endregion
 
         #region Quick Information
@@ -118,19 +123,20 @@ namespace h1ddengames {
 
         #region Getters/Setters/Constructors
         public InputLibrary(KeyCode key, float holdThreshold, float doubleTapThreshold) {
-            this.key = key;
-            this.holdThreshold = holdThreshold;
-            this.doubleTapThreshold = doubleTapThreshold;
+            Key = key;
+            LongHoldThreshold = holdThreshold;
+            DoubleTapThreshold = doubleTapThreshold;
         }
 
         public KeyCode Key { get => key; set => key = value; }
+        public float LongHoldThreshold { get => longHoldThreshold; set => longHoldThreshold = value; }
+        public float DoubleTapThreshold { get => doubleTapThreshold; set => doubleTapThreshold = value; }
         public float Timer { get => timer; set => timer = value; }
         public float LastTapTime { get => lastTapTime; set => lastTapTime = value; }
-        public float HoldThreshold { get => holdThreshold; set => holdThreshold = value; }
-        public float DoubleTapThreshold { get => doubleTapThreshold; set => doubleTapThreshold = value; }
         public UnityEvent SinglePressActions { get => singlePressActions; set => singlePressActions = value; }
         public UnityEvent DoublePressActions { get => doublePressActions; set => doublePressActions = value; }
-        public UnityEvent HoldActions { get => holdActions; set => holdActions = value; }
+        public UnityEvent LongHoldActions { get => longHoldActions; set => longHoldActions = value; }
+        public UnityEvent KeyUpActions { get => keyUpActions; set => keyUpActions = value; }
         #endregion
     }
 }

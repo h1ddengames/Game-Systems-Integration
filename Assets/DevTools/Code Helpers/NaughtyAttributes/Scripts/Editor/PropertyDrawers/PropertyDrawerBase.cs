@@ -37,7 +37,23 @@ namespace NaughtyAttributes.Editor
 
 		protected abstract void OnGUI_Internal(Rect rect, SerializedProperty property, GUIContent label);
 
-		public virtual float GetPropertyHeight(SerializedProperty property)
+		sealed override public float GetPropertyHeight(SerializedProperty property, GUIContent label)
+		{
+			bool visible = PropertyUtility.IsVisible(property);
+			if (!visible)
+			{
+				return 0.0f;
+			}
+
+			return GetPropertyHeight_Internal(property, label);
+		}
+
+		protected virtual float GetPropertyHeight_Internal(SerializedProperty property, GUIContent label)
+		{
+			return base.GetPropertyHeight(property, label);
+		}
+
+		protected virtual float GetPropertyHeight(SerializedProperty property)
 		{
 			return EditorGUI.GetPropertyHeight(property, true);
 		}

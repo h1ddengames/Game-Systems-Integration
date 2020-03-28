@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Background Material
-  m_Shader: {fileID: -6465566751694194690, guid: bde918ec63cd87949a5ccc760361fb31,
+  m_Name: Cloud Material
+  m_Shader: {fileID: -6465566751694194690, guid: f9d128431d9779f4d82a81be4c3bcaf6,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,28 +20,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
+    - Texture2D_80E503F5:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B4347FBD:
+        m_Texture: {fileID: 2800000, guid: 4183af6a174f2144288484ab0b83ba2a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
+    - _SampleTexture2D_6AC9A441_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 4183af6a174f2144288484ab0b83ba2a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_22744B67: 0.08
-    - Vector1_257FFE84: 0.1
-    - Vector1_B4B1ADA0: 5
-    - _EnableExternalAlpha: 0
+    - Vector1_2F8E8CDB: 0.01
+    - Vector1_3EC1CD91: 500
+    - Vector1_814C64F6: 0.01
+    - Vector1_FBFDE011: 5
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - Color_56F6B4B3: {r: 0, g: 0, b: 0, a: 1}
+    - Color_9C557711: {r: 1, g: 1, b: 1, a: 1}
+    - Color_C1D2A3FA: {r: 1, g: 1, b: 1, a: 1}

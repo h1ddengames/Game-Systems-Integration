@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 1051281041}
   - component: {fileID: 1051281040}
   - component: {fileID: 4271320008264346112}
+  - component: {fileID: 1699837815}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -242,7 +243,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: ad1a8da17d45de248aebebe693811fea, type: 2}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1051281041
@@ -299,70 +300,179 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9a48a0338095641b19bf5b1c81f071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showConfiguration: 0
-  characterMoveSpeed: 15
+  characterMoveSpeed: 1
+  characterMaxSpeed: 5
   characterJumpHeight: 1
-  characterJumpDelay: 0.25
-  currentConsecutiveJumps: 2
-  maxConsecutiveJumps: 2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  characterUsesSpriteRenderer: 0
-  showQuickInformation: 1
-  movementInput: {x: 0, y: 0}
-  lastJumped: 0
-  isCharacterGrounded: 1
-  isFacingRight: 0
-  isAllowedToMove: 1
-  isBeingControlledByCode: 0
-  loopThroughAllWaypoints: 0
-  showWaypoints: 0
-  listOfWayPoints: []
-  showHasJumpedEvent: 0
-  hasJumpedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showHasLandedEvent: 0
-  hasLandedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showIsGroundedEvent: 0
-  isGroundedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showIsNotGroundedEvent: 0
-  isNotGroundedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showHasChangedDirectionEvent: 0
-  hasChangedDirectionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showIsMovingEvent: 0
-  isMovingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showIsNotMovingEvent: 0
-  isNotMovingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showHasStartedMovingEvent: 0
-  hasStartedMovingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showHasStoppedMovingEvent: 0
-  hasStoppedMovingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  showReferences: 0
-  characterAnimator: {fileID: 95898481864777010}
-  characterSpriteRenderer: {fileID: 0}
-  characterRigidBody2D: {fileID: 1051281039}
-  characterBoxCollider2D: {fileID: 1051281041}
-  characterCircleCollider2D: {fileID: 1051281040}
-  stickyMaterial: {fileID: 6200000, guid: ad1a8da17d45de248aebebe693811fea, type: 2}
-  slipperyMaterial: {fileID: 6200000, guid: 40eadd890156e654aa1c0c7093a1787d, type: 2}
+  moveLeftKey: 97
+  moveRightKey: 100
+  jumpKey: 32
+  characterMovementInput: {x: 0, y: 0}
+  characterVelocity: {x: 0, y: 0}
+  characterRigidbody2D: {fileID: 1051281039}
+  playerInputModule: {fileID: 1699837815}
+--- !u!114 &1699837815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290715225530138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8b781fb927799469c79bcd67f59ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputLibrary:
+  - key: 97
+    longHoldThreshold: 0.01
+    doubleTapThreshold: 0.4
+    singlePressActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: -1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    doublePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    longHoldActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: -1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    keyUpActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    timer: 0
+    lastTapTime: 0
+  - key: 100
+    longHoldThreshold: 0.01
+    doubleTapThreshold: 0.4
+    singlePressActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    doublePressActions:
+      m_PersistentCalls:
+        m_Calls: []
+    longHoldActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    keyUpActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputX
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    timer: 0
+    lastTapTime: 0
+  - key: 32
+    longHoldThreshold: 0.01
+    doubleTapThreshold: 0.4
+    singlePressActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputY
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    doublePressActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputY
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    longHoldActions:
+      m_PersistentCalls:
+        m_Calls: []
+    keyUpActions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4271320008264346112}
+          m_MethodName: UpdateCharacterMovementInputY
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    timer: 0
+    lastTapTime: 0
 --- !u!1 &1315759352830414
 GameObject:
   m_ObjectHideFlags: 0
