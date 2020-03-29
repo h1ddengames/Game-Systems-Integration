@@ -6,14 +6,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using ReorderableList = NaughtyAttributes.ReorderableListAttribute;
 
 namespace h1ddengames {
     public class CharacterController2D : MonoBehaviour {
         #region Exposed Fields
-
         [BoxGroup("Configuration"), SerializeField] private float characterMoveSpeed = 1f;
         [BoxGroup("Configuration"), SerializeField] private float characterMaxSpeed = 5f;
         [BoxGroup("Configuration"), SerializeField] private float characterJumpHeight = 1f;
+
+        [BoxGroup("Configuration"),
+        Tooltip("What layers should the player collide with?"),
+        SerializeField]
+        private LayerMask groundLayer;
 
         [BoxGroup("Inputs"), SerializeField] private KeyCode moveLeftKey;
         [BoxGroup("Inputs"), SerializeField] private KeyCode moveRightKey;
@@ -21,9 +26,18 @@ namespace h1ddengames {
 
         [BoxGroup("Quick Information"), SerializeField] private Vector2 characterMovementInput;
         [BoxGroup("Quick Information"), SerializeField] private Vector2 characterVelocity;
+        [BoxGroup("Quick Information"), SerializeField] private bool isGrounded = true;
+        [BoxGroup("Quick Information"), SerializeField] private bool isFacingRight = false;
+
 
         [BoxGroup("Reference"), SerializeField] private Rigidbody2D characterRigidbody2D;
+        [BoxGroup("Reference"), SerializeField] private Transform characterGroundedChecker;
+        [BoxGroup("Reference"), SerializeField] private BoxCollider2D characterGroundedCheckerBox;
         [BoxGroup("Reference"), SerializeField] private PlayerInputModule playerInputModule;
+
+        [BoxGroup("Debug"), SerializeField] private bool showDebugInformation;
+        [BoxGroup("Debug"), ShowIf("showDebugInformation"), SerializeField] private int debugColliderOverlapsCounter;
+        [BoxGroup("Debug"), ShowIf("showDebugInformation"), ReorderableList, SerializeField] private Collider2D[] debugColliderOverlaps;
         #endregion
 
         #region Private Fields
@@ -37,7 +51,55 @@ namespace h1ddengames {
 
         #region My Methods
         public void CheckForGround() {
-            
+            bool lastFrameIsGrounded = isGrounded;
+            bool currentFrameIsGrounded;
+
+            debugColliderOverlaps = Physics2D.OverlapBoxAll(characterGroundedChecker.position, characterGroundedCheckerBox.size, 0, groundLayer);
+
+            debugColliderOverlapsCounter = debugColliderOverlaps.Length;
+
+            for(int i = 0; i < debugColliderOverlaps.Length; i++) {
+                // Ignore any collider that is marked as a trigger.
+                if(debugColliderOverlaps[i].isTrigger) {
+                    debugColliderOverlapsCounter--;
+                    continue;
+                }
+
+                // Ignore any collider that is on the player gameobject.
+                if(debugColliderOverlaps[i].gameObject.tag == "Player") {
+                    debugColliderOverlapsCounter--;
+                    continue;
+                }
+
+                // Ingore the collider if it's not on the same layers defined by groundLayer.
+                if(!((groundLayer.value & 1 << debugColliderOverlaps[i].gameObject.layer) == 1 << debugColliderOverlaps[i].gameObject.layer)) {
+                    debugColliderOverlapsCounter--;
+                    continue;
+                }
+            }
+
+            currentFrameIsGrounded = debugColliderOverlapsCounter > 0;
+
+            if(currentFrameIsGrounded) {
+                isGrounded = true;
+            }
+
+            if(!currentFrameIsGrounded) {
+                isGrounded = false;
+
+            }
+
+            // Just became ungrounded this frame.
+            if(lastFrameIsGrounded && !currentFrameIsGrounded) {
+                // Invoke not grounded event
+
+            }
+
+            // Just became grounded this frame.
+            if(!lastFrameIsGrounded && currentFrameIsGrounded) {
+                // Invoke landed event
+
+            }
         }
 
         public void Crouch() {
@@ -51,14 +113,16 @@ namespace h1ddengames {
         public void Move() {
             if(characterMovementInput.x > 0) {
                 characterRigidbody2D.AddForce(new Vector2(characterMoveSpeed, 0), ForceMode2D.Impulse);
+                isFacingRight = true;
             } else {
                 characterRigidbody2D.AddForce(new Vector2(-characterMoveSpeed, 0), ForceMode2D.Impulse);
+                isFacingRight = false;
             }
         }
 
         // TODO: Apply Knockback
         public void ApplyKnockback() {
-
+            Debug.Log("Applying knockback");
         }
 
         // TODO: Allow one-way Platforms that allow players to passthrough from below and stand on top.
@@ -67,6 +131,7 @@ namespace h1ddengames {
         // TODO: Add Dash Ability
         // TODO: Apply Double/Triple/Quad Jump Ability
         // TODO: Apply Teleport Ability
+        // TODO: Apply Jetpack Ability
 
         public void UpdateCharacterMovementInputX(float input) {
             // Getting horizontal input.
@@ -94,24 +159,24 @@ namespace h1ddengames {
             if(playerInputModule == null) {
                 // Getting horizontal input.
                 if(Input.GetKeyDown(moveLeftKey) || Input.GetKey(moveLeftKey)) {
-                    characterMovementInput = new Vector2(-1, characterMovementInput.y);
+                    UpdateCharacterMovementInputX(-1);
                 } else if(Input.GetKeyDown(moveRightKey) || Input.GetKey(moveRightKey)) {
-                    characterMovementInput = new Vector2(1, characterMovementInput.y);
+                    UpdateCharacterMovementInputX(1);
                 }
 
                 // Getting vertical input.
                 if(Input.GetKeyDown(jumpKey) || Input.GetKey(jumpKey)) {
-                    characterMovementInput = new Vector2(characterMovementInput.x, 1);
+                    UpdateCharacterMovementInputY(1);
                 }
 
                 // Ending horizontal input.
                 if(Input.GetKeyUp(moveLeftKey) || Input.GetKeyUp(moveRightKey)) {
-                    characterMovementInput = new Vector2(0, characterMovementInput.y);
+                    UpdateCharacterMovementInputX(0);
                 }
 
                 // Ending vertical input.
                 if(Input.GetKeyUp(jumpKey)) {
-                    characterMovementInput = new Vector2(characterMovementInput.x, 0);
+                    UpdateCharacterMovementInputY(0);
                 }
             }
         }
@@ -126,20 +191,31 @@ namespace h1ddengames {
                 characterRigidbody2D.velocity = new Vector2(Mathf.Clamp(characterRigidbody2D.velocity.x, -characterMaxSpeed, characterMaxSpeed), characterRigidbody2D.velocity.y);
             } else {
                 // Stop the player's movement instantly when player input stops.
-                characterRigidbody2D.velocity = new Vector2(0, characterRigidbody2D.velocity.y);
+                if(isGrounded) {
+                    characterRigidbody2D.velocity = new Vector2(0, characterRigidbody2D.velocity.y);
+                }
             }
 
             // Vertical movement.
             if(characterMovementInput.y > 0) {
-                Jump();
+                if(isGrounded) {
+                    Jump();
+                }
             }
 
+            CheckForGround();
 
             characterVelocity = characterRigidbody2D.velocity;
         }
 
         // Animation methods and other visual changes should be called here.
         void LateUpdate() {
+            if(isFacingRight) {
+
+            } else {
+
+            }
+
             if(!(characterMovementInput.x == 0)) {
                 // Do move animation
             } else {
