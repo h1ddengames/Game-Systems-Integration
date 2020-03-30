@@ -16,7 +16,7 @@ namespace h1ddengames {
         [BoxGroup("Configuration"), SerializeField] private float characterJumpHeight = 1f;
 
         [BoxGroup("Configuration"),
-        Tooltip("What layers should the player collide with?"),
+        Tooltip("The layers that this character can stand on."),
         SerializeField]
         private LayerMask groundLayer;
 
@@ -27,13 +27,15 @@ namespace h1ddengames {
         [BoxGroup("Quick Information"), SerializeField] private Vector2 characterMovementInput;
         [BoxGroup("Quick Information"), SerializeField] private Vector2 characterVelocity;
         [BoxGroup("Quick Information"), SerializeField] private bool isGrounded = true;
+        [BoxGroup("Quick Information"), SerializeField] private bool isJumping = false;
         [BoxGroup("Quick Information"), SerializeField] private bool isFacingRight = false;
-
+        [BoxGroup("Quick Information"), SerializeField] private bool hasChangedDirectionThisFrame = false;
 
         [BoxGroup("Reference"), SerializeField] private Rigidbody2D characterRigidbody2D;
         [BoxGroup("Reference"), SerializeField] private Transform characterGroundedChecker;
         [BoxGroup("Reference"), SerializeField] private BoxCollider2D characterGroundedCheckerBox;
         [BoxGroup("Reference"), SerializeField] private PlayerInputModule playerInputModule;
+        [BoxGroup("Reference"), SerializeField] private AnimationModule animationModule;
 
         [BoxGroup("Debug"), SerializeField] private bool showDebugInformation;
         [BoxGroup("Debug"), ShowIf("showDebugInformation"), SerializeField] private int debugColliderOverlapsCounter;
@@ -42,7 +44,6 @@ namespace h1ddengames {
 
         #region Private Fields
         private AutomatedMoveModule automatedMoveModule;
-        private AnimationModule animationModule;
         #endregion
 
         #region Getters/Setters/Constructors
@@ -86,7 +87,6 @@ namespace h1ddengames {
 
             if(!currentFrameIsGrounded) {
                 isGrounded = false;
-
             }
 
             // Just became ungrounded this frame.
@@ -99,6 +99,7 @@ namespace h1ddengames {
             if(!lastFrameIsGrounded && currentFrameIsGrounded) {
                 // Invoke landed event
 
+                isJumping = false;
             }
         }
 
@@ -108,15 +109,28 @@ namespace h1ddengames {
 
         public void Jump() {
             characterRigidbody2D.AddForce(new Vector2(0, characterJumpHeight), ForceMode2D.Impulse);
+
+            isJumping = true;
+
+            // Invoke jump event
+
         }
 
         public void Move() {
+            bool lastFrameWasFacingRight = isFacingRight;
+
             if(characterMovementInput.x > 0) {
                 characterRigidbody2D.AddForce(new Vector2(characterMoveSpeed, 0), ForceMode2D.Impulse);
                 isFacingRight = true;
             } else {
                 characterRigidbody2D.AddForce(new Vector2(-characterMoveSpeed, 0), ForceMode2D.Impulse);
                 isFacingRight = false;
+            }
+
+            bool currentFrameIsFacingRight = isFacingRight;
+
+            if(!lastFrameWasFacingRight && currentFrameIsFacingRight || lastFrameWasFacingRight && !currentFrameIsFacingRight) {
+                hasChangedDirectionThisFrame = true;
             }
         }
 
@@ -125,13 +139,29 @@ namespace h1ddengames {
             Debug.Log("Applying knockback");
         }
 
+        // TODO: Add Dodge Roll Ability
+        public void DodgeRoll() {
+            Debug.Log("Using Dodge Roll Skill");
+        }
+
+        // TODO: Add Dash Ability
+        public void Dash() {
+            Debug.Log("Using Dash Skill");
+        }
+
+        // TODO: Apply Teleport Ability
+        public void Teleport() {
+            Debug.Log("Using Teleport Skill");
+        }
+
+        // TODO: Apply Jetpack Ability
+        public void Jetpack() {
+            Debug.Log("Using Jetpack Skill");
+        }
+
         // TODO: Allow one-way Platforms that allow players to passthrough from below and stand on top.
         // TODO: Use the new Unity Input System
-        // TODO: Add Dodge Roll Ability
-        // TODO: Add Dash Ability
         // TODO: Apply Double/Triple/Quad Jump Ability
-        // TODO: Apply Teleport Ability
-        // TODO: Apply Jetpack Ability
 
         public void UpdateCharacterMovementInputX(float input) {
             // Getting horizontal input.
@@ -147,11 +177,11 @@ namespace h1ddengames {
         #region Unity Methods
         private void OnEnable() {
             playerInputModule = GetComponent<PlayerInputModule>();
+            animationModule = GetComponent<AnimationModule>();
         }
 
         void Awake() {
             automatedMoveModule = new AutomatedMoveModule();
-            animationModule = new AnimationModule();
         }
 
         // Input should be obtained here.
@@ -210,20 +240,15 @@ namespace h1ddengames {
 
         // Animation methods and other visual changes should be called here.
         void LateUpdate() {
-            if(isFacingRight) {
-
-            } else {
-
+            if(hasChangedDirectionThisFrame) {
+                animationModule.AnimateCharacterFlip();
+                hasChangedDirectionThisFrame = false;
             }
 
-            if(!(characterMovementInput.x == 0)) {
-                // Do move animation
-            } else {
-                // Do idle animation
-            }
+            animationModule.AnimateMove(Mathf.Abs(characterVelocity.x));
 
-            if(characterMovementInput.y > 0) {
-                // Do jump animation
+            if(characterMovementInput.y > 0 && !isJumping) {
+                animationModule.AnimateJump();
             }
         }
 

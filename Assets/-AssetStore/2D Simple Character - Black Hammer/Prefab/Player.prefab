@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 1051281039}
   - component: {fileID: 1051281041}
   - component: {fileID: 1051281040}
+  - component: {fileID: 1699837822}
   - component: {fileID: 4271320008264346112}
   - component: {fileID: 1699837815}
   m_Layer: 8
@@ -346,6 +347,18 @@ CircleCollider2D:
   m_Offset: {x: 0.018465191, y: -0.14}
   serializedVersion: 2
   m_Radius: 0.2726318
+--- !u!114 &1699837822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290715225530138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec03db32ff0ff4ba291e7911cf4698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4271320008264346112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,10 +383,14 @@ MonoBehaviour:
   characterMovementInput: {x: 0, y: 0}
   characterVelocity: {x: 0, y: 0}
   isGrounded: 1
+  isJumping: 0
+  isFacingRight: 0
+  hasChangedDirectionThisFrame: 0
   characterRigidbody2D: {fileID: 1051281039}
   characterGroundedChecker: {fileID: 1958228701}
   characterGroundedCheckerBox: {fileID: 1958228700}
   playerInputModule: {fileID: 1699837815}
+  animationModule: {fileID: 1699837822}
   showDebugInformation: 0
   debugColliderOverlapsCounter: 0
   debugColliderOverlaps: []
