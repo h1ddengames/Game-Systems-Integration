@@ -4638,6 +4638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkedTeleporter: {fileID: 1882890154}
+  isTeleporterUsable: 1
+  teleportSpeed: 20
 --- !u!61 &302108339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5140,6 +5143,8 @@ Transform:
   - {fileID: 1204599510}
   - {fileID: 1277558429}
   - {fileID: 1600519671}
+  - {fileID: 727143294}
+  - {fileID: 546998924}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5436,13 +5441,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546998920}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 0.0129629625, y: 0.0129629625, z: 0.0129629625}
   m_Children:
   - {fileID: 1001079665}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 438935704}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6138,13 +6143,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727143290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 0.0129629625, y: 0.0129629625, z: 0.0129629625}
   m_Children:
   - {fileID: 1793573978}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 438935704}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8746,6 +8751,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkedTeleporter: {fileID: 1904388794}
+  isTeleporterUsable: 1
+  teleportSpeed: 10
 --- !u!61 &1212412545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10776,6 +10784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkedTeleporter: {fileID: 302108338}
+  isTeleporterUsable: 1
+  teleportSpeed: 10
 --- !u!61 &1882890155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10974,6 +10985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773b8a01b498b4b40ac1faaa1293ad11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkedTeleporter: {fileID: 1212412544}
+  isTeleporterUsable: 1
+  teleportSpeed: 20
 --- !u!61 &1904388795
 BoxCollider2D:
   m_ObjectHideFlags: 0
