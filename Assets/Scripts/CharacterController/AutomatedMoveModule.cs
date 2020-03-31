@@ -4,103 +4,103 @@ using System;
 using UnityEngine;
 
 namespace h1ddengames {
-    [Serializable]
-    public class AutomatedMoveModule {
-        //#region Exposed Fields
+    //[Serializable]
+    //public class AutomatedMoveModule : MonoBehaviour {
+    //    #region Exposed Fields
 
-        //#endregion
+    //    #endregion
 
-        //#region Private Fields
-        //private CharacterController2D characterController2D;
-        //private bool waitingForDelayTimer = false;
-        //private int index = 0;
-        //private float tempTimer = 0;
-        //private float defaultMoveSpeed;
-        //#endregion
+    //    #region Private Fields
+    //    private CharacterController2D characterController2D;
+    //    private bool waitingForDelayTimer = false;
+    //    private int index = 0;
+    //    private float tempTimer = 0;
+    //    private float defaultMoveSpeed;
+    //    #endregion
 
-        //#region Getters/Setters/Constructors
-        //public AutomatedMoveModule(CharacterController2D characterController2D) {
-        //    this.characterController2D = characterController2D;
-        //    defaultMoveSpeed = this.characterController2D.CharacterMoveSpeed;
-        //}
-        //#endregion
+    //    #region Getters/Setters/Constructors
+    //    public AutomatedMoveModule(CharacterController2D characterController2D) {
+    //        this.characterController2D = characterController2D;
+    //        defaultMoveSpeed = this.characterController2D.CharacterMoveSpeed;
+    //    }
+    //    #endregion
 
-        //#region Automation Methods
-        //public void MoveToLocation(Transform desiredTransform, float moveSpeed) {
-        //    MoveToLocation(desiredTransform.position, moveSpeed);
-        //}
+    //    #region Automation Methods
+    //    public void MoveToLocation(Transform desiredTransform, float moveSpeed) {
+    //        MoveToLocation(desiredTransform.position, moveSpeed);
+    //    }
 
-        //public void MoveToLocation(GameObject objectToMoveTo, float moveSpeed) {
-        //    MoveToLocation(objectToMoveTo.transform.position, moveSpeed);
-        //}
+    //    public void MoveToLocation(GameObject objectToMoveTo, float moveSpeed) {
+    //        MoveToLocation(objectToMoveTo.transform.position, moveSpeed);
+    //    }
 
-        //public void MoveToLocation(Vector2 desiredPosition, float moveSpeed) {
-        //    if(!waitingForDelayTimer) {
-        //        characterController2D.transform.position = Vector2.MoveTowards(characterController2D.transform.position, desiredPosition, moveSpeed * Time.deltaTime);
-        //    }
-        //}
+    //    public void MoveToLocation(Vector2 desiredPosition, float moveSpeed) {
+    //        if(!waitingForDelayTimer) {
+    //            characterController2D.transform.position = Vector2.MoveTowards(characterController2D.transform.position, desiredPosition, moveSpeed * Time.deltaTime);
+    //        }
+    //    }
 
-        //public void Automate() {
-        //    if(characterController2D.ListOfWayPoints.Count == 0) {
-        //        characterController2D.IsBeingControlledByCode = false;
-        //        return;
-        //    }
+    //    public void Automate() {
+    //        if(characterController2D.ListOfWayPoints.Count == 0) {
+    //            characterController2D.IsBeingControlledByCode = false;
+    //            return;
+    //        }
 
-        //    // Avoid Out of Bounds Exception.
-        //    if(index < characterController2D.ListOfWayPoints.Count) {
-        //        // Check if the player is already at the waypoint.
-        //        if(characterController2D.ListOfWayPoints[index].HasArrived) {
-        //            index++;
-        //            return;
-        //        }
+    //        // Avoid Out of Bounds Exception.
+    //        if(index < characterController2D.ListOfWayPoints.Count) {
+    //            // Check if the player is already at the waypoint.
+    //            if(characterController2D.ListOfWayPoints[index].HasArrived) {
+    //                index++;
+    //                return;
+    //            }
 
-        //        // Wait until delay before moving to waypoint is 0.
-        //        if(characterController2D.ListOfWayPoints[index].DelayBeforeMovingToWaypoint > 0) {
-        //            characterController2D.ListOfWayPoints[index].DelayBeforeMovingToWaypoint -= Time.deltaTime;
-        //            return;
-        //        }
+    //            // Wait until delay before moving to waypoint is 0.
+    //            if(characterController2D.ListOfWayPoints[index].DelayBeforeMovingToWaypoint > 0) {
+    //                characterController2D.ListOfWayPoints[index].DelayBeforeMovingToWaypoint -= Time.deltaTime;
+    //                return;
+    //            }
 
-        //        // Until the player hasn't arrived at the waypoint, keep moving the player.
-        //        if(!characterController2D.ListOfWayPoints[index].HasArrived) {
+    //            // Until the player hasn't arrived at the waypoint, keep moving the player.
+    //            if(!characterController2D.ListOfWayPoints[index].HasArrived) {
 
-        //            // Check to see if the player is close enough to the waypoint.
-        //            if(Vector2.Distance(characterController2D.transform.position, characterController2D.ListOfWayPoints[index].Location) < 0.2f) {
-        //                // Stop the player and wait until delay after reaching waypoint is 0.
-        //                characterController2D.CharacterRigidBody2D.velocity = Vector2.zero;
-        //                characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint -= Time.deltaTime;
+    //                // Check to see if the player is close enough to the waypoint.
+    //                if(Vector2.Distance(characterController2D.transform.position, characterController2D.ListOfWayPoints[index].Location) < 0.2f) {
+    //                    // Stop the player and wait until delay after reaching waypoint is 0.
+    //                    characterController2D.CharacterRigidBody2D.velocity = Vector2.zero;
+    //                    characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint -= Time.deltaTime;
 
-        //                if(characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint <= 0) {
-        //                    characterController2D.ListOfWayPoints[index].HasArrived = true;
-        //                }
-        //            } else {
-        //                MoveToLocation(characterController2D.ListOfWayPoints[index].Location, characterController2D.ListOfWayPoints[index].MoveSpeedToWaypoint);
-        //            }
-        //        }
-        //    } else {
-        //        // If index is equal to or greater than the count of all waypoints, reset has arrived based on 
-        //        // characterController2D preference.
+    //                    if(characterController2D.ListOfWayPoints[index].DelayAfterReachingWaypoint <= 0) {
+    //                        characterController2D.ListOfWayPoints[index].HasArrived = true;
+    //                    }
+    //                } else {
+    //                    MoveToLocation(characterController2D.ListOfWayPoints[index].Location, characterController2D.ListOfWayPoints[index].MoveSpeedToWaypoint);
+    //                }
+    //            }
+    //        } else {
+    //            // If index is equal to or greater than the count of all waypoints, reset has arrived based on 
+    //            // characterController2D preference.
 
-        //        // TODO: Looping through all waypoints will not work currently. The above loop directly changes the
-        //        // delay times in each waypoint object. Need to create a temp timer that is only set once at the
-        //        // beginning to the delay time then subtracted by Time.deltaTime first set.
-        //        if(characterController2D.LoopThroughAllWaypoints) {
-        //            for(int i = 0; i < characterController2D.ListOfWayPoints.Count; i++) {
-        //                characterController2D.ListOfWayPoints[i].HasArrived = false;
-        //                index = 0;
-        //            }
-        //        } else {
-        //            characterController2D.IsBeingControlledByCode = false;
-        //        }
-        //    }
-        //}
-        //#endregion
+    //            // TODO: Looping through all waypoints will not work currently. The above loop directly changes the
+    //            // delay times in each waypoint object. Need to create a temp timer that is only set once at the
+    //            // beginning to the delay time then subtracted by Time.deltaTime first set.
+    //            if(characterController2D.LoopThroughAllWaypoints) {
+    //                for(int i = 0; i < characterController2D.ListOfWayPoints.Count; i++) {
+    //                    characterController2D.ListOfWayPoints[i].HasArrived = false;
+    //                    index = 0;
+    //                }
+    //            } else {
+    //                characterController2D.IsBeingControlledByCode = false;
+    //            }
+    //        }
+    //    }
+    //    #endregion
 
-        //#region My Methods
-        //#endregion
+    //    #region My Methods
+    //    #endregion
 
-        //#region Helper Methods
-        //#endregion
-    }
+    //    #region Helper Methods
+    //    #endregion
+    //}
 
     [Serializable]
     public class WayPoint {

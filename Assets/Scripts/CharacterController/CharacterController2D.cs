@@ -43,7 +43,7 @@ namespace h1ddengames {
         #endregion
 
         #region Private Fields
-        private AutomatedMoveModule automatedMoveModule;
+        //private AutomatedMoveModule automatedMoveModule;
         #endregion
 
         #region Getters/Setters/Constructors
@@ -181,7 +181,7 @@ namespace h1ddengames {
         }
 
         void Awake() {
-            automatedMoveModule = new AutomatedMoveModule();
+            //automatedMoveModule = new AutomatedMoveModule();
         }
 
         // Input should be obtained here.
