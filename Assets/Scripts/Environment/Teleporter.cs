@@ -7,7 +7,7 @@ namespace h1ddengames {
 		#region Exposed Fields
 		[SerializeField] private Teleporter linkedTeleporter;
 		[SerializeField] private bool isTeleporterUsable = true;
-		[SerializeField] private float teleportSpeed = 3f;
+		//[SerializeField] private float teleportSpeed = 3f;
 		#endregion
 
 		#region Private Fields
@@ -20,13 +20,16 @@ namespace h1ddengames {
 		#endregion
 
 		#region My Methods
+		// TODO: Implement teleport over time.
 		public void Teleport() {
-			if(teleportSpeed == 0) {
-				player.transform.position = linkedTeleporter.transform.position;
-			} else {
-				player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-				isTeleporting = true;
-			}
+			player.transform.position = linkedTeleporter.transform.position;
+
+			//if(teleportSpeed == 0) {
+			//	player.transform.position = linkedTeleporter.transform.position;
+			//} else {
+			//	player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			//	isTeleporting = true;
+			//}
 		}
 		#endregion
 
@@ -48,16 +51,16 @@ namespace h1ddengames {
 				Teleport();
 			}
 
-			if(isTeleporting) {
-				// Check to see if the player is close enough to the linked teleporter.
-				if(Vector2.Distance(player.transform.position, linkedTeleporter.transform.position) < 0.2f) {
-					isTeleporting = false;
-					player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-					return;
-				}
+			//if(isTeleporting) {
+			//	// Check to see if the player is close enough to the linked teleporter.
+			//	if(Vector2.Distance(player.transform.position, linkedTeleporter.transform.position) < 0.2f) {
+			//		isTeleporting = false;
+			//		player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+			//		return;
+			//	}
 
-				player.transform.position = Vector2.MoveTowards(player.transform.position, linkedTeleporter.transform.position, teleportSpeed * Time.deltaTime);
-			}
+			//	player.transform.position = Vector2.MoveTowards(player.transform.position, linkedTeleporter.transform.position, teleportSpeed * Time.deltaTime);
+			//}
 		}
 
 		void OnDisable() {
@@ -65,9 +68,9 @@ namespace h1ddengames {
 		}
 
 		private void OnValidate() {
-			if(teleportSpeed < 0) {
-				teleportSpeed = 0;
-			}
+			//if(teleportSpeed < 0) {
+			//	teleportSpeed = 0;
+			//}
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision) {

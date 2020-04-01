@@ -4640,7 +4640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedTeleporter: {fileID: 1882890154}
   isTeleporterUsable: 1
-  teleportSpeed: 0
 --- !u!61 &302108339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5893,6 +5892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8b781fb927799469c79bcd67f59ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAcceptingInput: 1
   inputLibrary:
   - key: 97
     longHoldThreshold: 0.01
@@ -8754,7 +8754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedTeleporter: {fileID: 1904388794}
   isTeleporterUsable: 1
-  teleportSpeed: 0
 --- !u!61 &1212412545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10835,7 +10834,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedTeleporter: {fileID: 302108338}
   isTeleporterUsable: 1
-  teleportSpeed: 0
 --- !u!61 &1882890155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11036,7 +11034,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedTeleporter: {fileID: 1212412544}
   isTeleporterUsable: 1
-  teleportSpeed: 0
 --- !u!61 &1904388795
 BoxCollider2D:
   m_ObjectHideFlags: 0

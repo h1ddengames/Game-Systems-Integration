@@ -10,6 +10,7 @@ using UnityEngine.Events;
 namespace h1ddengames {
     public class PlayerInputModule : Singleton<PlayerInputModule> {
         #region Exposed Fields
+        [BoxGroup("Configuration"), SerializeField] private bool isAcceptingInput = true;
         [NaughtyAttributes.ReorderableList, SerializeField] private List<InputLibrary> inputLibrary = new List<InputLibrary>();
         #endregion
 
@@ -17,6 +18,7 @@ namespace h1ddengames {
         #endregion
 
         #region Getters/Setters/Constructors
+        public bool IsAcceptingInput { get => isAcceptingInput; set => isAcceptingInput = value; }
         public List<InputLibrary> InputLibrary { get => inputLibrary; set => inputLibrary = value; }
         #endregion
 
