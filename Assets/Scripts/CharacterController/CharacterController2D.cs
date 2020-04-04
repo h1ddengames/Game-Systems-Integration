@@ -5,7 +5,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
-using ReorderableList = NaughtyAttributes.ReorderableListAttribute;
+using ReorderableListAttribute = NaughtyAttributes.ReorderableListAttribute;
 
 namespace h1ddengames {
     public class CharacterController2D : MonoBehaviour {
@@ -45,7 +45,7 @@ namespace h1ddengames {
         #endregion
 
         #region Private Fields
-        
+        public Vector2 desiredVelocity;
         #endregion
 
         #region Getters/Setters/Constructors

@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
-using ReorderableList = NaughtyAttributes.ReorderableListAttribute;
+using ReorderableListAttribute = NaughtyAttributes.ReorderableListAttribute;
 
 namespace h1ddengames {
     public class AutomatedMoveModule : MonoBehaviour {

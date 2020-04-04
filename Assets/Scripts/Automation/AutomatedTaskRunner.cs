@@ -161,11 +161,11 @@ namespace h1ddengames {
     [Serializable]
     public class AutomatedTask {
         #region Exposed Fields
-        [BoxedHeader("Configuration"), SerializeField] private float delayBeforeTask;
-        [SerializeField] private float delayAfterTask;
-        [SerializeField] private bool hasInvokedTask = false;
-        [SerializeField] private bool hasFinishedDelayAfterTask = false;
-        [Space(10), SerializeField] private UnityEvent task;
+        [BoxGroup("Configuration"), SerializeField] private float delayBeforeTask;
+        [BoxGroup("Configuration"), SerializeField] private float delayAfterTask;
+        [BoxGroup("Configuration"), SerializeField] private bool hasInvokedTask = false;
+        [BoxGroup("Configuration"), SerializeField] private bool hasFinishedDelayAfterTask = false;
+        [BoxGroup("Configuration"), Space(10), SerializeField] private UnityEvent task;
         #endregion
 
         #region Private Fields
