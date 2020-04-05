@@ -13,6 +13,9 @@ namespace h1ddengames {
         [BoxGroup("Configuration"), SerializeField] private float characterMoveSpeed = 1f;
         [BoxGroup("Configuration"), SerializeField] private float characterMaxSpeed = 5f;
         [BoxGroup("Configuration"), SerializeField] private float characterJumpHeight = 1f;
+        [BoxGroup("Configuration"), SerializeField] private int currentJumpCount = 2;
+        [BoxGroup("Configuration"), SerializeField] private int maxJumpCount = 2;
+        [BoxGroup("Configuration"), SerializeField] private float jumpDelay = 0.3f;
 
         [BoxGroup("Configuration"),
         Tooltip("The layers that this character can stand on."),
@@ -23,55 +26,61 @@ namespace h1ddengames {
         [BoxGroup("Inputs"), SerializeField] private KeyCode moveRightKey;
         [BoxGroup("Inputs"), SerializeField] private KeyCode jumpKey;
 
-        [BoxGroup("Quick Information"), SerializeField] private Vector2 characterMovementInput;
-        [BoxGroup("Quick Information"), SerializeField] private Vector2 characterVelocity;
-        [BoxGroup("Quick Information"), SerializeField] private bool isBeingControlledByCode = false;
-        [BoxGroup("Quick Information"), SerializeField] private bool isAcceptingInput = true;
-        [BoxGroup("Quick Information"), SerializeField] private bool isGrounded = true;
-        [BoxGroup("Quick Information"), SerializeField] private bool isJumping = false;
-        [BoxGroup("Quick Information"), SerializeField] private bool isFacingRight = false;
-        [BoxGroup("Quick Information"), SerializeField] private bool hasChangedDirectionThisFrame = false;
-
         [BoxGroup("Reference"), SerializeField] private Rigidbody2D characterRigidbody2D;
         [BoxGroup("Reference"), SerializeField] private Transform characterGroundedChecker;
         [BoxGroup("Reference"), SerializeField] private BoxCollider2D characterGroundedCheckerBox;
         [BoxGroup("Reference"), SerializeField] private PlayerInputModule playerInputModule;
-        [BoxGroup("Reference"), SerializeField] private AnimationModule animationModule;
-        [BoxGroup("Reference"), SerializeField] private AutomatedMoveModule automatedMoveModule;
-
-        [BoxGroup("Debug"), SerializeField] private bool showDebugInformation;
-        [BoxGroup("Debug"), ShowIf("showDebugInformation"), SerializeField] private int debugColliderOverlapsCounter;
-        [BoxGroup("Debug"), ShowIf("showDebugInformation"), ReorderableList, SerializeField] private Collider2D[] debugColliderOverlaps;
+        [BoxGroup("Reference"), SerializeField] private AnimationModule characterAnimationModule;
+        [BoxGroup("Reference"), SerializeField] private AutomatedMoveModule CharacterAutomatedMoveModule;
+        [BoxGroup("Reference"), SerializeField] private SkillModule skillModule;
         #endregion
 
         #region Private Fields
-        public Vector2 desiredVelocity;
+        //private Vector2 characterMovementInput;
+        //private Vector2 characterVelocity;
+        //private bool isBeingControlledByCode = false;
+        //private bool isAcceptingInput = true;
+        //private bool isGrounded = true;
+        //private bool isJumping = false;
+        //private bool isFacingRight = false;
+        //private float lastJumped = 0;
+        //private bool hasChangedDirectionThisFrame = false;
+        //private int debugColliderOverlapsCounter;
+        //private Collider2D[] debugColliderOverlaps;
+
+        public Vector2 CharacterMovementInput { get; set; }
+        public Vector2 CharacterVelocity { get; set; }
+        public bool IsBeingControlledByCode { get; set; }
+        public bool IsAcceptingInput { get; set; }
+        public bool IsGrounded { get; set; }
+        public bool IsJumping { get; set; }
+        public bool IsFacingRight { get; set; }
+        public float LastJumped { get; set; }
+        public bool HasChangedDirectionThisFrame { get; set; }
+        public int DebugColliderOverlapsCounter { get; set; }
+        public Collider2D[] DebugColliderOverlaps { get; set; }
         #endregion
 
         #region Getters/Setters/Constructors
         public float CharacterMoveSpeed { get => characterMoveSpeed; set => characterMoveSpeed = value; }
         public float CharacterMaxSpeed { get => characterMaxSpeed; set => characterMaxSpeed = value; }
         public float CharacterJumpHeight { get => characterJumpHeight; set => characterJumpHeight = value; }
+        public int CurrentJumpCount { get => currentJumpCount; set => currentJumpCount = value; }
+        public int MaxJumpCount { get => maxJumpCount; set => maxJumpCount = value; }
+        public float JumpDelay { get => jumpDelay; set => jumpDelay = value; }
         public LayerMask GroundLayer { get => groundLayer; set => groundLayer = value; }
+
         public KeyCode MoveLeftKey { get => moveLeftKey; set => moveLeftKey = value; }
         public KeyCode MoveRightKey { get => moveRightKey; set => moveRightKey = value; }
         public KeyCode JumpKey { get => jumpKey; set => jumpKey = value; }
-        public Vector2 CharacterMovementInput { get => characterMovementInput; set => characterMovementInput = value; }
-        public Vector2 CharacterVelocity { get => characterVelocity; set => characterVelocity = value; }
-        public bool IsBeingControlledByCode { get => isBeingControlledByCode; set => isBeingControlledByCode = value; }
-        public bool IsAcceptingInput { get => isAcceptingInput; set => isAcceptingInput = value; }
-        public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
-        public bool IsJumping { get => isJumping; set => isJumping = value; }
-        public bool IsFacingRight { get => isFacingRight; set => isFacingRight = value; }
-        public bool HasChangedDirectionThisFrame { get => hasChangedDirectionThisFrame; set => hasChangedDirectionThisFrame = value; }
+
         public Rigidbody2D CharacterRigidbody2D { get => characterRigidbody2D; set => characterRigidbody2D = value; }
         public Transform CharacterGroundedChecker { get => characterGroundedChecker; set => characterGroundedChecker = value; }
         public BoxCollider2D CharacterGroundedCheckerBox { get => characterGroundedCheckerBox; set => characterGroundedCheckerBox = value; }
         public PlayerInputModule PlayerInputModule { get => playerInputModule; set => playerInputModule = value; }
-        public AnimationModule AnimationModule { get => animationModule; set => animationModule = value; }
-        public AutomatedMoveModule AutomatedMoveModule { get => automatedMoveModule; set => automatedMoveModule = value; }
-        public int DebugColliderOverlapsCounter { get => debugColliderOverlapsCounter; set => debugColliderOverlapsCounter = value; }
-        public Collider2D[] DebugColliderOverlaps { get => debugColliderOverlaps; set => debugColliderOverlaps = value; }
+        public AnimationModule CharacterAnimationModule { get => characterAnimationModule; set => characterAnimationModule = value; }
+        public AutomatedMoveModule CharacterAutomatedMoveModule1 { get => CharacterAutomatedMoveModule; set => CharacterAutomatedMoveModule = value; }
+        public SkillModule SkillModule { get => skillModule; set => skillModule = value; }
         #endregion
 
         #region My Methods
@@ -132,7 +141,8 @@ namespace h1ddengames {
         }
 
         public void Jump() {
-            CharacterRigidbody2D.AddForce(new Vector2(0, CharacterJumpHeight), ForceMode2D.Impulse);
+            //CharacterRigidbody2D.AddForce(new Vector2(0, CharacterJumpHeight), ForceMode2D.Impulse);
+            CharacterRigidbody2D.velocity = new Vector2(CharacterRigidbody2D.velocity.x, Mathf.Sqrt(2 * CharacterJumpHeight * Mathf.Abs(Physics2D.gravity.y)));
 
             IsJumping = true;
 
@@ -158,34 +168,8 @@ namespace h1ddengames {
             }
         }
 
-        // TODO: Apply Knockback
-        public void ApplyKnockback() {
-            Debug.Log("Applying knockback");
-        }
-
-        // TODO: Add Dodge Roll Ability
-        public void DodgeRoll() {
-            Debug.Log("Using Dodge Roll Skill");
-        }
-
-        // TODO: Add Dash Ability
-        public void Dash() {
-            Debug.Log("Using Dash Skill");
-        }
-
-        // TODO: Apply Teleport Ability
-        public void Teleport() {
-            Debug.Log("Using Teleport Skill");
-        }
-
-        // TODO: Apply Jetpack Ability
-        public void Jetpack() {
-            Debug.Log("Using Jetpack Skill");
-        }
-
         // TODO: Allow one-way Platforms that allow players to passthrough from below and stand on top.
         // TODO: Use the new Unity Input System
-        // TODO: Apply Double/Triple/Quad Jump Ability
 
         public void UpdateCharacterMovementInputX(float input) {
             // Getting horizontal input.
@@ -201,7 +185,7 @@ namespace h1ddengames {
         #region Unity Methods
         private void OnEnable() {
             PlayerInputModule = GetComponent<PlayerInputModule>();
-            AnimationModule = GetComponent<AnimationModule>();
+            CharacterAnimationModule = GetComponent<AnimationModule>();
         }
 
         void Awake() {
@@ -241,6 +225,8 @@ namespace h1ddengames {
                     UpdateCharacterMovementInputY(0);
                 }
             }
+
+            LastJumped += Time.deltaTime;
         }
 
         // Movement methods/ Physics related calculations should be called here.
@@ -260,12 +246,18 @@ namespace h1ddengames {
 
             // Vertical movement.
             if(CharacterMovementInput.y > 0) {
-                if(IsGrounded) {
+                if(IsGrounded || (CurrentJumpCount > 0 && LastJumped > JumpDelay)) {
                     Jump();
+                    CurrentJumpCount--;
+                    LastJumped = 0;
                 }
             }
 
             CheckForGround();
+
+            if(IsGrounded) {
+                CurrentJumpCount = MaxJumpCount;
+            }
 
             CharacterVelocity = CharacterRigidbody2D.velocity;
         }
@@ -273,14 +265,14 @@ namespace h1ddengames {
         // Animation methods and other visual changes should be called here.
         void LateUpdate() {
             if(HasChangedDirectionThisFrame) {
-                AnimationModule.AnimateCharacterFlip();
+                CharacterAnimationModule.AnimateCharacterFlip();
                 HasChangedDirectionThisFrame = false;
             }
 
-            AnimationModule.AnimateMove(Mathf.Abs(CharacterVelocity.x));
+            CharacterAnimationModule.AnimateMove(Mathf.Abs(CharacterVelocity.x));
 
             if(CharacterMovementInput.y > 0 && !IsJumping) {
-                AnimationModule.AnimateJump();
+                CharacterAnimationModule.AnimateJump();
             }
         }
 
